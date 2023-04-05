@@ -31,3 +31,4 @@ Route::get('/pengunjung', [PengunjungController::class, 'index']);
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::get('/petugas', [PetugasController::class, 'index']);
 Route::get('/laporan', [LaporanController::class, 'index']);
+Route::get('/home', [DashboardController::class, 'index']);
