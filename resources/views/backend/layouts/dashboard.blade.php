@@ -53,13 +53,13 @@
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card sales-card">
             <div class="card-body">
-              <h5 class="card-title">Stok Kamar Sweet</h5>
+              <h5 class="card-title">Stok Kamar Suite</h5>
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-door-open"></i>
                 </div>
                 <div class="ps-3">
-                <h6>Sweet</h6>
+                <h6>Suite</h6>
                 <span class="text-success small pt-1 fw-bold">Tersedia : 80 Kamar</span>
                 <span class="text-muted small pt-2 ps-1">Terjual 100 kamar</span>
                 </div>
@@ -87,7 +87,7 @@
                       name: 'Superior',
                       data: [11, 32, 45, 32, 34, 52, 41, 15, 11, 32, 18, 9]
                     }, {
-                      name: 'Sweet',
+                      name: 'Suite',
                       data: [15, 11, 32, 18, 9, 24, 11, 42, 82, 56, 54, 87]
                     }],
                     chart: {

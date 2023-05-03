@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\MainController;
 use App\Http\Controllers\Backend\PengunjungController;
 use App\Http\Controllers\Backend\PetugasController;
+use App\Http\Controllers\Backend\TambahkamarController;
 use App\Http\Controllers\Backend\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-}); 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/home', [DashboardController::class, 'index']);
 Route::get('/kamar', [KamarController::class, 'index']);

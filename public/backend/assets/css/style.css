@@ -14,12 +14,12 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
+  background: #E2F3F4;
   color: #444444;
 }
 
 a {
-  color: #4154f1;
+  color: #005F63;
   text-decoration: none;
 }
 
@@ -63,7 +63,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color: #005F63;
 }
 
 /*--------------------------------------------------------------
@@ -252,7 +252,7 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #005F63;
   font-family: "Poppins", sans-serif;
 }
 
@@ -388,7 +388,7 @@ h6 {
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #005F63;
   font-family: "Nunito", sans-serif;
 }
 
@@ -490,7 +490,7 @@ h6 {
 }
 
 .header-nav .nav-profile {
-  color: #012970;
+  color: #005F63; 
 }
 
 .header-nav .nav-profile img {
@@ -574,7 +574,7 @@ h6 {
 }
 
 .header-nav .messages .message-item:hover {
-  background-color: #f6f9ff;
+  background-color: #fff6f7;
 }
 
 .header-nav .profile {
@@ -624,7 +624,7 @@ h6 {
   padding: 20px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #aab7cf transparent;
+  scrollbar-color: #001846 transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
 }
@@ -638,11 +638,11 @@ h6 {
 .sidebar::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background-color: #aab7cf;
+  background-color: #0059ff;
 }
 
 @media (min-width: 1200px) {
@@ -690,7 +690,7 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #bd8989;
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }
@@ -714,7 +714,7 @@ h6 {
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
+  color: #679597;
   background: #fff;
 }
 
@@ -723,12 +723,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #005F63;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color: #005F63;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -821,7 +821,7 @@ h6 {
 
 .dashboard .info-card h6 {
   font-size: 28px;
-  color: #012970;
+  color: #005F63;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -837,8 +837,8 @@ h6 {
 }
 
 .dashboard .sales-card .card-icon {
-  color: #4154f1;
-  background: #f6f6fe;
+  color: #005F63;
+  background: #E2F3F4;
 }
 
 .dashboard .revenue-card .card-icon {
@@ -1064,178 +1064,6 @@ h6 {
   max-width: 120px;
 }
 
-/*--------------------------------------------------------------
-# F.A.Q Page
---------------------------------------------------------------*/
-.faq .basic h6 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #4154f1;
-}
-
-.faq .basic p {
-  color: #6980aa;
-}
-
-/*--------------------------------------------------------------
-# Contact
---------------------------------------------------------------*/
-.contact .info-box {
-  padding: 28px 30px;
-}
-
-.contact .info-box i {
-  font-size: 38px;
-  line-height: 0;
-  color: #4154f1;
-}
-
-.contact .info-box h3 {
-  font-size: 20px;
-  color: #012970;
-  font-weight: 700;
-  margin: 20px 0 10px 0;
-}
-
-.contact .info-box p {
-  padding: 0;
-  line-height: 24px;
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-.contact .php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.contact .php-email-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.contact .php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
-}
-
-.contact .php-email-form input,
-.contact .php-email-form textarea {
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 14px;
-  border-radius: 0;
-}
-
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
-  border-color: #4154f1;
-}
-
-.contact .php-email-form input {
-  padding: 10px 15px;
-}
-
-.contact .php-email-form textarea {
-  padding: 12px 15px;
-}
-
-.contact .php-email-form button[type=submit] {
-  background: #4154f1;
-  border: 0;
-  padding: 10px 30px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 4px;
-}
-
-.contact .php-email-form button[type=submit]:hover {
-  background: #5969f3;
-}
-
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/*--------------------------------------------------------------
-# Error 404
---------------------------------------------------------------*/
-.error-404 {
-  padding: 30px;
-}
-
-.error-404 h1 {
-  font-size: 180px;
-  font-weight: 700;
-  color: #4154f1;
-  margin-bottom: 0;
-  line-height: 150px;
-}
-
-.error-404 h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #012970;
-  margin-bottom: 30px;
-}
-
-.error-404 .btn {
-  background: #51678f;
-  color: #fff;
-  padding: 8px 30px;
-}
-
-.error-404 .btn:hover {
-  background: #3e4f6f;
-}
-
-@media (min-width: 992px) {
-  .error-404 img {
-    max-width: 50%;
-  }
-}
 
 /*--------------------------------------------------------------
 # Footer
@@ -1244,17 +1072,64 @@ h6 {
   padding: 20px 0;
   font-size: 14px;
   transition: all 0.3s;
-  border-top: 1px solid #cddfff;
+  border-top: 1px solid #E2F3F4;
 }
 
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: #005F63;
 }
 
 .footer .credits {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #012970;
+  color: #005F63;
+}
+
+
+form {
+  width:100px;
+  margin:25px auto;
+}
+.search {
+  padding:1px 8px;
+  background:rgb(255, 255, 255);
+  border:0px solid  #E2F3F4;
+  font-size:smaller;
+  border-radius: 10px;
+}
+.button {
+  position:relative;
+  padding:1px 8px;
+  left:-5px;
+  border:2px solid #E2F3F4;
+  background-color:#005F63;
+  color:#fafafa;
+  font-size:smaller;
+  border-radius: 10px;
+}
+.button:hover  {
+  background-color:#005F63;
+  color: #E2F3F4;
+}
+.buttontambah {
+  position:relative;
+  padding:4px 10px;
+  left:-1px;
+  border:2px solid #E2F3F4;
+  background-color:#005F63;
+  color:#fafafa;
+  font-size:smaller;
+  border-radius: 10px;
+}
+.select {
+  position:relative;
+  padding:0px 20px;
+  left:-1px;
+  border:2px solid #ffffff;
+  background-color:#ffffff;
+  color:#005F63;
+  font-size:smaller;
+  border-radius: 10px;
 }

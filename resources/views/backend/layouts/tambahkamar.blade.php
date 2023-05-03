@@ -80,35 +80,76 @@
       </ul>
     </nav><!-- End Icons Navigation -->
   </header><!-- End Header -->
-  @include('backend/layouts.sidebar')
-  @yield('container')
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Hello <strong><span>GOHOME</span></strong>.
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">TIM GOHOME</a>
-    </div>
-  </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="backend/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="backend/assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="backend/assets/vendor/echarts/echarts.min.js"></script>
-  <script src="backend/assets/vendor/quill/quill.min.js"></script>
-  <script src="backend/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="backend/assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="backend/assets/vendor/php-email-form/validate.js"></script>
+<main id="main" class="main">
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-</body>
-</html>
+    <div class="pagetitle">
+      <h1>Tambah Kamar</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html"></a><li>
+          <li class="breadcrumb-item"><li>
+          <li class="breadcrumb-item active"><li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-20">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+
+              <!-- General Form Elements -->
+              <form>
+              <div class="row mb-0">
+                  <label class="col-sm-0 col-form-label">Jenis Kamar</label>
+                  <div class="col-sm-0">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Pilih Jenis Kamar</option>
+                      <option value="1">Superior</option>
+                      <option value="2">Deluxe</option>
+                      
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-0">
+                  <label class="col-sm-2 col-form-label">Jenis Kasur</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Pilih Jenis Kasur</option>
+                      <option value="1">Superior</option>
+                      <option value="2">Deluxe</option> 
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Upload File</label>
+                  <div class="col-sm-">
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Deskripsi</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" style="height: 100px"></textarea>
+                  </div>
+                </div>
+                <div class="row mb-3">                
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Buang</button>
+                  </div>
+                </div>
+              </form><!-- End General Form Elements -->
+            </div>
+          </div>
+        </div>        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
