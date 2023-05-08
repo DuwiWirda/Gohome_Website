@@ -70,9 +70,28 @@
               <hr class="dropdown-divider">
             </li>
             <li>
+
               <a class="dropdown-item d-flex align-items-center" href="/login">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>LogOut</span>
+                <!-- <div class="modal fade" id="verticalycentered" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Vertically Centered</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Apakah Anda Yakin Ingin Keluar?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                      <button type="button" class="btn btn-primary" href='/login'>Ya</button>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              
               </a>
             </li>
           </ul><!-- End Profile Dropdown Items -->
@@ -82,19 +101,6 @@
   </header><!-- End Header -->
   @include('backend/layouts.sidebar')
   @yield('container')
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Hello <strong><span>GOHOME</span></strong>.
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">TIM GOHOME</a>
-    </div>
-  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

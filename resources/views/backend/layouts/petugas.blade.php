@@ -22,49 +22,23 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">ID</th>
+                    
                     <th scope="col">Nama Petugas</th>
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
-                    <th scope="col">No.Hp</th>
+                    <th scope="col">Jabatan</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Brandon@gmail.com</td>
-                    <td>Brandon</td>
-                    <td>089765453678</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Bridie@gmail.com</td>
-                    <td>Bridie</td>
-                    <td>098789908765</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Ashleigh@gmail.com</td>
-                    <td>Ashleigh</td>
-                    <td>098765456763</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>Angus@gmail.com</td>
-                    <td>Angus</td>
-                    <td>789098763426</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Raheem@gmail.com</td>
-                    <td>Raheem</td>
-                    <td>089876678654</td>
-                  </tr>
+                @foreach ($akun as $akun)
+                <tr>
+                    <td>{{ $akun->nama }}</td>
+                    <td>{{ $akun->email }}</td>
+                    <td>{{ $akun->password }}</td>
+                    <td>{{ $akun->level }}</td>
+                    
+                </tr>
+             @endforeach
                 </tbody>
               </table>
               <!-- End Default Table Example -->

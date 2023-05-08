@@ -37,7 +37,8 @@
       <i class="bi bi-journal-text"></i>
       <span>Laporan</span>
     </a>
-  </li><!-- End Login Page Nav -->
+  </li>
+  <!-- End Login Page Nav -->
 </ul>
 
 </aside><!-- End Sidebar-->
