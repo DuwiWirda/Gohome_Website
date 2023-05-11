@@ -101,9 +101,7 @@
   </header><!-- End Header -->
   @include('backend/layouts.sidebar')
   @yield('container')
-
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <!-- Vendor JS Files -->
   <script src="backend/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

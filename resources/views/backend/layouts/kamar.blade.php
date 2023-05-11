@@ -1,18 +1,14 @@
 @extends('backend/layouts.main')
 @section('container')
-
 <!-- Favicons -->
 <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="icon">
 <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="logo">
-
 <main id="main" class="main">
 <div class="pagetitle">
   <h1>Data Kamar    
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
   <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button>
-
-
 </div><!-- End Page Title -->
 <section class="section kamar">
 <div class="card">
@@ -33,7 +29,7 @@
                 <tbody>
                 @foreach ($kamar as $kamar)
                 <tr>
-                    <td>{{ $kamar->nomor_kamar }}</td>
+                    <td>{{ $kamar->nomer_kamar }}</td>
                     <td>{{ $kamar->jenis_kamar }}</td>
                     <td>{{ $kamar->jenis_kasur }}</td>
                     <td>{{ $kamar->harga }}</td>
