@@ -11,7 +11,7 @@
   <h1>Data Petugas
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
-  <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button>
+  <a href="{{ route('petugas.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
   </h1>
 </div><!-- End Page Title -->
 
@@ -27,6 +27,8 @@
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
                     <th scope="col">Jabatan</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Hapus</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,7 +38,12 @@
                     <td>{{ $akun->email }}</td>
                     <td>{{ $akun->password }}</td>
                     <td>{{ $akun->level }}</td>
-                    
+                    <td>
+                      <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                    </td>
+                    <td>
+                      <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>
+                    </td>   
                 </tr>
              @endforeach
                 </tbody>

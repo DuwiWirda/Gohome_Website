@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApiModel\Kamar;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,28 +12,74 @@ class KamarController extends Controller
 {
     public function index()
     {
-        $kamar = DB::table('kamar')->get();
-        return view('backend/layouts.kamar', ['kamar' => $kamar]);
+        $kamar = Kamar::all();
+        return view('backend/layouts.kamar', compact(['kamar']));
     }
-    public function create()
+    public function add()
     {
-        $kamar = null;
-        return view('backend/layouts.kamar.create',compact('kamar'));
+        return view('backend/layouts.addkamar');
+        return response()->json([
+            'status' => 'ok',
+            'message' => 'Data Kamar berhasil ditambahkan'
+        ], 201);
     }
-    public function store(Request $request)
+    public function save(Request $request)
     {
-        DB::table('kamar')->insert([
-            'id_kamar' => $request->idkamar,
-            'nomor_kamar' => $request->nomorkamar,
-            'jenis_kamar' => $request->jeniskamar,
-            'jenis_kasur' => $request->jeniskasur,
-            'harga' => $request->harga,
-            'deskripsi' => $request->deskripsi,
-            'gambar_kamar' => $request->gambarkamar,
-            'status_kamar' => $request->statuskamar,
-        ]);
-        return redirect()->route('kamar.index')
-        ->with('success','Data kamar berhasil disimpan');
+        $kamar = new Kamar();
+
+        if($request->file('gambar_kamar')){
+            $validatedData = $request->validate([
+                'gambar_kamar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+            $foto = $request->file('gambar_kamar')->getClientOriginalName();
+            $path = $request->file('gambar_kamar')->move('images/' , $foto);
+            $kamar->gambar_kamar = $foto;
+        }
+
+        $kamar->id_kamar = $request->id_kamar;
+        $kamar->jenis_kamar = $request->jenis_kamar;
+        $kamar->nomer_kamar = $request->nomer_kamar;
+        $kamar->harga = $request->harga;
+        $kamar->deskripsi = $request->deskripsi;
+        $kamar->jenis_kasur = $request->jenis_kasur;
+        $kamar->gambar_kamar = $request->gambar_kamar;
+        $kamar->status_kamar = $request->status_kamar;
+
+        $kamar->save();
+
+        return redirect()->route('kamar.index');
+    }
+    // public function edit(Kamar $id_kamar){
+    //     // $kamar = Kamar::findOrFail($id_kamar);
+
+    //     return view('backend/layouts.editkamar', compact(['kamar']));
+    // }
+
+    public function update(Request $request){
+        $kamar = Kamar::findOrFail($request->id_kamar);
+
+        if($request->file('gambar')){
+            $validatedData = $request->validate([
+                'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+            $foto = $request->file('gambar')->getClientOriginalName();
+            $path = $request->file('gambar')->move('images/' , $foto);
+            $kamar->gambar_kamar = $foto;
+        }
+        $kamar->id_kamar = $request->id_kamar;
+        $kamar->jenis_kamar = $request->jenis_kamar;
+        $kamar->nomer_kamar = $request->nomer_kamar;
+        $kamar->harga = $request->harga;
+        $kamar->deskripsi = $request->deskripsi;
+        $kamar->jenis_kasur = $request->jenis_kasur;
+        $kamar->gambar_kamar = $request->gambar_kamar;
+        $kamar->status_kamar = $request->status_kamar;
+
+        $kamar->save();
+
+        return redirect()->route('kamar.index');
     }
 
     public function search(Request $request)

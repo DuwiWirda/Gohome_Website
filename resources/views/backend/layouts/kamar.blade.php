@@ -8,7 +8,7 @@
   <h1>Data Kamar    
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
-  <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button>
+  <a href="{{ route('kamar.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
 </div><!-- End Page Title -->
 <section class="section kamar">
 <div class="card">
@@ -24,18 +24,28 @@
                     <th scope="col">Deskripsi</th>
                     <th scope="col">Gambar</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Hapus</th>
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($kamar as $kamar)
+                @foreach ($kamar as $index => $kamar)
                 <tr>
                     <td>{{ $kamar->nomer_kamar }}</td>
                     <td>{{ $kamar->jenis_kamar }}</td>
                     <td>{{ $kamar->jenis_kasur }}</td>
                     <td>{{ $kamar->harga }}</td>
                     <td>{{ $kamar->deskripsi }}</td>
-                    <td>{{ $kamar->gambar_kamar }}</td>
+                    <td>
+                      <img src="{{ asset('images/' . $kamar->gambar_kamar) }}" alt="" srcset="" width="150" class="rounded">
+                    </td>
                     <td>{{ $kamar->status_kamar }}</td>
+                    <td>
+                      <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                    </td>
+                    <td>
+                      <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>
+                    </td>  
                 </tr>
              @endforeach
                 </tbody>

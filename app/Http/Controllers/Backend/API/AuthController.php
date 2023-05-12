@@ -2,9 +2,9 @@
 namespace App\Http\Controllers\Backend\API;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\ApiModel\Kamar;
 use Illuminate\Http\Request;
 use App\Models\Pengunjung;
-use App\Models\ApiModel\Kamar;
 use App\Models\ApiModel\Transaksi;
 use Illuminate\Support\Facades\Validator;
 
@@ -104,6 +104,5 @@ use Illuminate\Support\Facades\Validator;
             return response()->json($update_pengunjung);
         }
         
-}
-    
+}   
 ?>  

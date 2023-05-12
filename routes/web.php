@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Backend\AuthController;
-use App\Http\Controllers\Backend\DashboardadminController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\KamarController;
 use App\Http\Controllers\Backend\LaporanController;
@@ -9,6 +7,7 @@ use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\PengunjungController;
 use App\Http\Controllers\Backend\PetugasController;
 use App\Http\Controllers\Backend\TransaksiController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,32 +21,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/home', [DashboardController::class, 'index']);
-Route::get('/kamar', [KamarController::class, 'index']);
-Route::get('/pengunjung', [PengunjungController::class, 'index']);
-Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::get('/petugas', [PetugasController::class, 'index']);
 Route::get('/laporan', [LaporanController::class, 'index']);
 Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
 Route::middleware(['web'])->group(function () {
     Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
 });
 
+//Route Kamar
+    Route::get('/kamar', [KamarController::class, 'index'])->name('kamar.index');
+    Route::get('/addkamar', [KamarController::class, 'add'])->name('kamar.add');
+    Route::post('/updatekamar', [KamarController::class, 'update'])->name('kamar.update');
+    Route::post('/savekamar', [KamarController::class, 'save'])->name('kamar.save');
 
+//Rote Pengunjung
+    Route::get('/pengunjung', [PengunjungController::class, 'index'])->name('pengunjung.index');
+    Route::get('/addpengunjung', [PengunjungController::class, 'add'])->name('pengunjung.add');
+    Route::post('/savepengunjung', [PengunjungController::class, 'save'])->name('pengunjung.save');
 
-// routes/web.php
+//Route Petugas
+    Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
+    Route::get('/addpetugas', [PetugasController::class, 'add'])->name('petugas.add');
+    Route::post('/savepetugas', [PetugasController::class, 'save'])->name('petugas.save');
 
-// Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::post('/login', 'Auth\LoginController@login');
-// Route::get('/home', [DashboardadminController::class, 'index']);
-
-// Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
-// Route::post('/login', [\App\Http\Controllers\AuthController::class, 'authenticate'])->name('authenticate');
-// Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     Route::get('/admin/dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
-// });
-// Route::middleware(['auth', 'superadmin'])->group(function () {
-//     Route::get('/superadmin/dashboard', [\App\Http\Controllers\SuperAdminController::class, 'dashboard'])->name('superadmin.dashboard');
-// });
+//Route Transaksi
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::get('/addtransaksi', [TransaksiController::class, 'add'])->name('transaksi.add');
+    Route::post('/updatetransaksi', [TransaksiController::class, 'update'])->name('transaksi.update');
+    Route::post('/savetransaksi', [TransaksiController::class, 'save'])->name('transaksi.save');

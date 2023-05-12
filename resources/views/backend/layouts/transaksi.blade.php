@@ -11,7 +11,8 @@
   <h1>Data Transaksi
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
-  <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button>
+  <a href="{{ route('transaksi.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
+  <!-- <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button> -->
   </h1>
 </div><!-- End Page Title -->
 

@@ -12,7 +12,8 @@
   <h1>Data Pengunjung
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
-  <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button>
+  <a href="{{ route('pengunjung.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
+
 </div><!-- End Page Title -->
 <section class="section pengunjung">
 <div class="card">
@@ -24,8 +25,9 @@
                     <th scope="col">NIK</th>
                     <th scope="col">Nama Pengunjung</th>
                     <th scope="col">Email</th>
-                    
                     <th scope="col">No.Hp</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Hapus</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,6 +38,12 @@
                     <td>{{ $pengunjung->email }}</td>
                     
                     <td>{{ $pengunjung->telepon }}</td>
+                    <td>
+                      <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                    </td>
+                    <td>
+                      <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>
+                    </td>  
                 </tr>
              @endforeach
                 </tbody>
