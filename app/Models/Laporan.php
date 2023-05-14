@@ -11,8 +11,8 @@ class Laporan extends Model
     protected $primaryKey = 'id_transaksi';
     protected $fillable = [
         'id_transaksi', 
-        'tgl_checkin', 
-        'tgl_checkout',
+        'tanggal_checkin', 
+        'tanggal_checkout',
         'status', 
         'harga', 
         'total', 

@@ -27,16 +27,16 @@
               <form class="container" method="POST" id="form-petugas" action="{{ route('transaksi.save') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="Name">Nama Pengunjung : </label>
-                    <select name="pengunjung" id="pengunjung" class="form-control">
+                    <label for="Name">Pilih Pengunjung : </label>
+                    <select name="nik" id="nik" class="form-control">
                       @foreach($pengunjung as $pengunjung)
                           <option value="{{ $pengunjung->nik }}">{{ '| ' . $pengunjung->nik . '| ' . $pengunjung->nama_pengunjung }}</option>
                       @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="Name">Kamar : </label>
-                    <select name="kamar" id="kamar" class="form-control">
+                    <label for="Name">[ilih Kamar : </label>
+                    <select name="jenis_kamar" id="jenis_kamar" class="form-control">
                       @foreach($kamar as $kamar)
                           <option value="{{ $kamar->id_kamar }}">{{ '| ' . $kamar->jenis_kamar . '| ' . $kamar->jenis_kasur }}</option>
                       @endforeach
@@ -44,23 +44,27 @@
                 </div>
                 <div class="mb-3">
                     <label for="email">Check In : </label>
-                    <input type="date" name="checkin" id="checkin" class="form-control">
+                    <input type="date" name="tanggal_checkin" id="tanggal_checkin" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="email">Check Out : </label>
-                    <input type="date" name="checkout" id="checkin" class="form-control">
+                    <input type="date" name="tanggal_checkout" id="tanggal_checkin" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="Phone">Status : </label>
                     <select name="status" id="status" class="form-control">
-                      <option value="pending">Pending</option>
-                      <option value="cancel">Cancel</option>
-                      <option value="success">success</option>
+                      <option value="Proses">Proses</option>
+                      <option value="Checkin">Checkin</option>
+                      <option value="Checkout">Checkout</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="gambar">Bukti TF: </label>
-                    <input type="file" name="bukti" id="bukti" class="form-control">
+                    <label for="email">Harga : </label>
+                    <input type="text" name="harga" id="harga" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="email">Total : </label>
+                    <input type="text" name="total" id="total" class="form-control">
                 </div>
                 <div class="row mb-3">                
                   <div class="col-sm-10">

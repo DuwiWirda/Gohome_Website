@@ -4,7 +4,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Tambah Petugas</h1>
+      <h1>Edit Petugas</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html"></a><li>
@@ -23,31 +23,31 @@
               <h5 class="card-title"></h5>
 
               <!-- General Form Elements -->
-              <form class="container" method="POST" id="form-petugas" action="{{ route('petugas.save') }}">
+              <form class="container" method="POST" id="form-petugas" action="{{ route('petugas.update') }}">
                 @csrf
+                <input type="hidden" name="id_akun" value="{{ $petugas->id_akun }}">
                 <div class="mb-3">
                     <label for="Name">Nama Petugas: </label>
-                    <input type="text" name="nama" id="name" class="form-control">
+                    <input type="text" name="{{ $petugas->nama }}" id="nama" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="email">Email : </label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <input type="email" name="{{ $petugas->email }}" id="email" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="Passwprd">Password : </label>
-                    <input type="text" name="password" id="password" class="form-control">
+                    <input type="text" name="{{ $petugas->password }}" id="password" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="harga">Jabatan : </label>
                     <select name="level" class="form-control" id="level">
-                      <option value="Admin">Admin</option>
-                      <option value="SuperAdmin">Super Admin</option>
+                      <option value="Admin" {{ $petugas->level == "Admin" ? 'selected' : '' }}>Admin</option>
+                      <option value="SuperAdmin" {{ $petugas->level == "SuperAdmin" ? 'selected' : '' }}>SuperAdmin</option>
                     </select>
                 </div>
                 <div class="row mb-3">                
                   <div class="col-sm-10">
                     <button type="submit" class="btn btn-success button p-2">Simpan</button>
-                    <button class="btn btn-success button p-2" onclick="reset()">Buang</button>
                   </div>
                 </div>
               </form><!-- End General Form Elements -->

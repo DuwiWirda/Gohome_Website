@@ -32,12 +32,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($akun as $akun)
+                @foreach ($petugas as $petugas)
                 <tr>
-                    <td>{{ $akun->nama }}</td>
-                    <td>{{ $akun->email }}</td>
-                    <td>{{ $akun->password }}</td>
-                    <td>{{ $akun->level }}</td>
+                    <td>{{ $petugas->nama }}</td>
+                    <td>{{ $petugas->email }}</td>
+                    <td>{{ $petugas->password }}</td>
+                    <td>{{ $petugas->level }}</td>
                     <td>
                       <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
                     </td>

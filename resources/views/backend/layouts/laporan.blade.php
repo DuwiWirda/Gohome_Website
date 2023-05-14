@@ -48,9 +48,9 @@
                     <td>{{ $transaksi->id_transaksi}}</td>
                     <td>{{ $transaksi ->pengunjung->nama_pengunjung }}</td>
                     <td>{{ $transaksi ->kamar->jenis_kamar }}</td>
-                    <td>{{ $transaksi ->kamar->nomor_kamar }}</td>
-                    <td>{{ $transaksi->tgl_checkin }}</td>
-                    <td>{{ $transaksi->tgl_checkout }}</td>
+                    <td>{{ $transaksi ->kamar->nomer_kamar }}</td>
+                    <td>{{ $transaksi->tanggal_checkin }}</td>
+                    <td>{{ $transaksi->tanggal_checkout }}</td>
                     <td>{{ $transaksi->status }}</td>
                     <td>{{ $transaksi->harga }}</td>
                     <td>{{ $transaksi->total}}</td>

@@ -27,20 +27,24 @@
               <form class="container" method="POST" id="form-petugas" action="{{ route('pengunjung.save') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="Name">NIK : </label>
+                    <label for="Nik">NIK : </label>
                     <input type="number" name="nik" id="nik" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="Name">Nama Pengunjung : </label>
-                    <input type="text" name="name" id="name" class="form-control">
+                    <input type="text" name="nama_pengunjung" id="nama_pengunjung" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="email">Email : </label>
+                    <label for="Email">Email : </label>
                     <input type="email" name="email" id="email" class="form-control">
                 </div>
                 <div class="mb-3">
+                    <label for="Password">Password : </label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <div class="mb-3">
                     <label for="Phone">No.Hp : </label>
-                    <input type="number" name="phone" id="phone" class="form-control">
+                    <input type="number" name="telepon" id="telepon" class="form-control">
                 </div>
                 <div class="row mb-3">                
                   <div class="col-sm-10">

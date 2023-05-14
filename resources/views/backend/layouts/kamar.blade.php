@@ -41,7 +41,7 @@
                     </td>
                     <td>{{ $kamar->status_kamar }}</td>
                     <td>
-                      <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                      <a href="{{ route('kamar.edit', ['id_kamar' => $kamar->id_kamar]) }}"class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
                     </td>
                     <td>
                       <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>

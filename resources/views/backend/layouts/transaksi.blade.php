@@ -31,8 +31,6 @@
                     <th scope="col">Status</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Total</th>
-                    <th scope="col">TF</th>
-                    <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,13 +39,11 @@
                     <td>{{ $transaksi->nik }}</td>
                     <td>{{ $transaksi ->pengunjung->nama_pengunjung }}</td>
                     <td>{{ $transaksi ->kamar->jenis_kamar }}</td>
-                    <td>{{ $transaksi->tgl_checkin }}</td>
-                    <td>{{ $transaksi->tgl_checkout }}</td>
+                    <td>{{ $transaksi->tanggal_checkin }}</td>
+                    <td>{{ $transaksi->tanggal_checkout }}</td>
                     <td>{{ $transaksi->status }}</td>
                     <td>{{ $transaksi->harga }}</td>
                     <td>{{ $transaksi->total}}</td>
-                    <td>{{ $transaksi->bukti_tf}}</td>
-                    
                 </tr>
              @endforeach
                   

@@ -2,6 +2,8 @@
 
 namespace App\Models\ApiModel;
 
+use App\Models\Pengunjung;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,14 +14,21 @@ class Transaksi extends Model
     protected $fillable = [
         'id_transaksi', 
         'tanggal_checkin',
-        'tanggal_checkout', 
-        'bukti_tf', 
+        'tanggal_checkout',  
         'status', 
         'harga', 
         'total', 
         'nik',
-        'id_akun',
         'id_kamar'
     ];
     public $timestamps = true;
+    
+    public function pengunjung()
+    {
+        return $this->belongsTo(Pengunjung::class, 'nik', 'nik');
+    }
+    public function kamar()
+    {
+        return $this->belongsTo(Post::class, 'id_kamar', 'id_kamar');
+    }
 }

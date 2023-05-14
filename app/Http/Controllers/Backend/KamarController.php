@@ -23,6 +23,7 @@ class KamarController extends Controller
             'message' => 'Data Kamar berhasil ditambahkan'
         ], 201);
     }
+
     public function save(Request $request)
     {
         $kamar = new Kamar();
@@ -31,12 +32,10 @@ class KamarController extends Controller
             $validatedData = $request->validate([
                 'gambar_kamar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
-
             $foto = $request->file('gambar_kamar')->getClientOriginalName();
             $path = $request->file('gambar_kamar')->move('images/' , $foto);
             $kamar->gambar_kamar = $foto;
         }
-
         $kamar->id_kamar = $request->id_kamar;
         $kamar->jenis_kamar = $request->jenis_kamar;
         $kamar->nomer_kamar = $request->nomer_kamar;
@@ -45,17 +44,13 @@ class KamarController extends Controller
         $kamar->jenis_kasur = $request->jenis_kasur;
         $kamar->gambar_kamar = $request->gambar_kamar;
         $kamar->status_kamar = $request->status_kamar;
-
         $kamar->save();
-
         return redirect()->route('kamar.index');
     }
-    // public function edit(Kamar $id_kamar){
-    //     // $kamar = Kamar::findOrFail($id_kamar);
-
-    //     return view('backend/layouts.editkamar', compact(['kamar']));
-    // }
-
+    public function edit($id_kamar){
+        $kamar = Kamar::findOrFail($id_kamar);
+        return view('backend/layouts.editkamar', compact(['kamar']));
+    }
     public function update(Request $request){
         $kamar = Kamar::findOrFail($request->id_kamar);
 

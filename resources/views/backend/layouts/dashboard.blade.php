@@ -11,27 +11,30 @@
     <!-- Left side columns -->
     <div class="col-lg-15">
       <div class="row">
-        <!-- Stok Deluxe -->
+        <!-- Stok Standard-->
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card sales-card">
             <div class="card-body">
               <h5 class="card-title">Stok Kamar Standard</h5>
-
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                   <i class="bi bi-door-open"></i>
                 </div>
                 <div class="ps-3">
                 <h6>Standard</h6>
-                <span class="text-success small pt-1 fw-bold">Tersedia : 50 Kamar</span>
-                  <span class="text-muted small pt-2 ps-1">Terjual 100 kamar</span>
-
+                    @if ($standard > 0)
+                        <p> <span class="text-success small pt-1 fw-bold">Tersedia: {{ $standard }} Kamar
+                        <span class="text-muted small pt-2 ps-1">Terisi: {{ $terisiStandard }} Kamar
+                        </p>
+                    @else
+                        <p><span class="text-success small pt-1 fw-bold">Kamar Standard kosong.</p>
+                    @endif
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- End Stok Deluxe -->
-        <!-- Stok Superior -->
+        </div><!-- End Stok Standard -->
+        <!-- Stok Deluxe -->
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card sales-card">
             <div class="card-body">
@@ -42,14 +45,19 @@
                 </div>
                 <div class="ps-3">
                 <h6>Deluxe</h6>
-                <span class="text-success small pt-1 fw-bold">Tersedia : 25 Kamar</span>
-                <span class="text-muted small pt-2 ps-1">Terjual 150 kamar</span>
+                @if ($deluxe > 0)
+                        <p> <span class="text-success small pt-1 fw-bold">Tersedia: {{ $deluxe }} Kamar
+                        <span class="text-muted small pt-2 ps-1">Terisi: {{ $terisiDeluxe }} Kamar
+                        </p>
+                    @else
+                        <p><span class="text-success small pt-1 fw-bold">Kamar Deluxe kosong.</p>
+                    @endif
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- End Stok Superior-->
-        <!-- Stok Sweet -->
+        </div><!-- End Stok Deluxe-->
+        <!-- Stok Suite -->
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card sales-card">
             <div class="card-body">
@@ -60,13 +68,18 @@
                 </div>
                 <div class="ps-3">
                 <h6>Suite</h6>
-                <span class="text-success small pt-1 fw-bold">Tersedia : 80 Kamar</span>
-                <span class="text-muted small pt-2 ps-1">Terjual 100 kamar</span>
+                @if ($suite > 0)
+                        <p> <span class="text-success small pt-1 fw-bold">Tersedia: {{ $suite }} Kamar
+                        <span class="text-muted small pt-2 ps-1">Terisi: {{ $terisiSuite }} Kamar
+                        </p>
+                    @else
+                        <p><span class="text-success small pt-1 fw-bold">Kamar Suite kosong.</p>
+                    @endif
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- End Stok Superior-->
+        </div><!-- End Stok Suite-->
         <!-- Reports -->
         <div class="col-12">
           <div class="card">
