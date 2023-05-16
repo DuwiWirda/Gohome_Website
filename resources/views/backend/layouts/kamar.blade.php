@@ -1,8 +1,8 @@
 @extends('backend/layouts.main')
 @section('container')
 <!-- Favicons -->
-<link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="icon">
-<link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="logo">
+<link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
+<link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 <main id="main" class="main">
 <div class="pagetitle">
   <h1>Data Kamar    
@@ -37,11 +37,14 @@
                     <td>{{ $kamar->harga }}</td>
                     <td>{{ $kamar->deskripsi }}</td>
                     <td>
-                      <img src="{{ asset('images/' . $kamar->gambar_kamar) }}" alt="" srcset="" width="150" class="rounded">
+                    <img src="{{ asset('images/' . $kamar->gambar_kamar) }}" alt=""
+                                            srcset="" width="150" class="rounded">
                     </td>
                     <td>{{ $kamar->status_kamar }}</td>
                     <td>
-                      <a href="{{ route('kamar.edit', ['id_kamar' => $kamar->id_kamar]) }}" class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                      <a
+                          href="{{ route('kamar.edit', ['id_kamar' => $kamar->id_kamar]) }}"class="btn btn-success button p-2"><i
+                                                class="bi bi-pencil"></i></a>
                     </td>
                     <td>
                     
@@ -57,3 +60,4 @@
           </div>
 </section>
 </main><!-- End #main -->
+@endsection

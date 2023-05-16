@@ -1,19 +1,25 @@
 <?php
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'id_akun',
+        'name',
         'email',
         'password',
-        'level',
+        'role',
     ];
 
     protected $hidden = [
@@ -21,32 +27,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function isAdmin()
-    {
-        return $this->level === 'admin';
-    }
-
-    public function isSuperAdmin()
-    {
-        return $this->level === 'superadmin';
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
-// namespace App\Models;
-
-// // use Illuminate\Contracts\Auth\MustVerifyEmail;
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Foundation\Auth\User as Authenticatable;
-// use Illuminate\Notifications\Notifiable;
-// use Laravel\Sanctum\HasApiTokens;
-
-// class User extends Authenticatable
-// {
-//     use HasApiTokens, HasFactory, Notifiable;
-//     protected $primaryKey = 'id_akun';
-//     protected $table = 'akun';
-   
-
-//     protected $casts = [
-//         'email_verified_at' => 'datetime',
-//     ];
-// }

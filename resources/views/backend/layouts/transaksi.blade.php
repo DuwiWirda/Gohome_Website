@@ -2,8 +2,8 @@
 @section('container')
 
  <!-- Favicons -->
-  <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="icon">
-  <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="logo">
+  <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
+  <link href="{{ asset('backend/assets/img/greenlogo.png')}}" rel="logo">
 
 
 <main id="main" class="main">
@@ -11,7 +11,8 @@
   <h1>Data Transaksi
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
-  <a href="{{ route('transaksi.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
+  <a href="{{ route('transaksi.add') }}" class="btn btn-success button p-2"><i
+                        class="bi bi-person-plus"></i></a>
   <!-- <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button> -->
   </h1>
 </div><!-- End Page Title -->
@@ -37,13 +38,13 @@
                 @foreach ($transaksi as $transaksi)
                 <tr>
                     <td>{{ $transaksi->nik }}</td>
-                    <td>{{ $transaksi ->pengunjung->nama_pengunjung }}</td>
-                    <td>{{ $transaksi ->kamar->jenis_kamar }}</td>
+                    <td>{{ $transaksi->pengunjung->nama_pengunjung }}</td>
+                    <td>{{ $transaksi->kamar->jenis_kamar }}</td>
                     <td>{{ $transaksi->tanggal_checkin }}</td>
                     <td>{{ $transaksi->tanggal_checkout }}</td>
                     <td>{{ $transaksi->status }}</td>
                     <td>{{ $transaksi->harga }}</td>
-                    <td>{{ $transaksi->total}}</td>
+                    <td>{{ $transaksi->total }}</td>
                 </tr>
              @endforeach
                   
@@ -54,3 +55,4 @@
           </div>
 </section>
 </main><!-- End #main -->
+@endsection

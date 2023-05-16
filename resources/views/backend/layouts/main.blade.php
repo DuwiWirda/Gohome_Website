@@ -10,24 +10,25 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="icon">
-  <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="logo">
+  <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
+  <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
   <!-- Vendor CSS Files -->
-  <link href="{{asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/quill/quill.snow.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-  <link href="{{asset('backend/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{asset('backend/assets/css/style.css')}}" rel="stylesheet">
+  <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.5.0
@@ -57,7 +58,8 @@
           </a>
         </li><!-- End Search Icon-->
         <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                        data-bs-toggle="dropdown">
             
             <span class="d-none d-md-block dropdown-toggle ps-2">Duwi Wirda</span>
           </a><!-- End Profile Iamge Icon -->
@@ -71,26 +73,11 @@
             </li>
             <li>
 
-              <a class="dropdown-item d-flex align-items-center" href="/login">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>LogOut</span>
-                <!-- <div class="modal fade" id="verticalycentered" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Vertically Centered</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Apakah Anda Yakin Ingin Keluar?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                      <button type="button" class="btn btn-primary" href='/login'>Ya</button>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item d-flex align-items-center"><i
+                                        class="bi bi-box-arrow-right"></i> Logout</button>
+                            </form>
               
               </a>
             </li>
@@ -101,7 +88,8 @@
   </header><!-- End Header -->
   @include('backend/layouts.sidebar')
   @yield('container')
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
   <script src="backend/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

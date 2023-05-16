@@ -2,8 +2,8 @@
 @section('container')
 
   <!-- Favicons -->
-  <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="icon">
-  <link href="{{asset('backend/assets/img/greenlogo.png')}}" rel="logo">
+  <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
+  <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 
 
 <main id="main" class="main">
@@ -11,7 +11,8 @@
   <h1>Data Petugas
   <input class="search" type="text" placeholder="Cari..." required>	
   <input class="button" type="button" value="Cari">
-  <a href="{{ route('petugas.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
+  <a href="{{ route('petugas.add') }}" class="btn btn-success button p-2"><i
+                        class="bi bi-person-plus"></i></a>
   </h1>
 </div><!-- End Page Title -->
 
@@ -53,3 +54,4 @@
           </div>
 </section>
 </main><!-- End #main -->
+@endsection

@@ -26,12 +26,14 @@
       <span>Transaksi</span>
     </a>
   </li><!-- End Contact Page Nav -->
+  @if (auth()->user()->role == 'super')
   <li class="nav-item">
     <a class="nav-link collapsed" href="/petugas">
       <i class="bi bi-person"></i>
       <span>Petugas</span>
     </a>
   </li><!-- End Register Page Nav -->
+  @endif
   <li class="nav-item">
     <a class="nav-link collapsed" href="/laporan">
       <i class="bi bi-journal-text"></i>
