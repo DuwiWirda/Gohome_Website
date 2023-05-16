@@ -15,6 +15,7 @@ class KamarController extends Controller
         $kamar = Kamar::all();
         return view('backend/layouts.kamar', compact(['kamar']));
     }
+
     public function add()
     {
         return view('backend/layouts.addkamar');
@@ -47,10 +48,12 @@ class KamarController extends Controller
         $kamar->save();
         return redirect()->route('kamar.index');
     }
+
     public function edit($id_kamar){
         $kamar = Kamar::findOrFail($id_kamar);
         return view('backend/layouts.editkamar', compact(['kamar']));
     }
+
     public function update(Request $request){
         $kamar = Kamar::findOrFail($request->id_kamar);
 
@@ -71,17 +74,20 @@ class KamarController extends Controller
         $kamar->jenis_kasur = $request->jenis_kasur;
         $kamar->gambar_kamar = $request->gambar_kamar;
         $kamar->status_kamar = $request->status_kamar;
-
         $kamar->save();
-
         return redirect()->route('kamar.index');
     }
 
-    public function search(Request $request)
-{
-    $query = $request->input('query');
-    $results = Post::where('jenis_kamar', 'LIKE', '%'.$query.'%')->get();
-    return view('search', ['results' => $results]);
-}
+//     public function search(Request $request)
+// {
+//     $query = $request->input('query');
+//     $results = Post::where('jenis_kamar', 'LIKE', '%'.$query.'%')->get();
+//     return view('search', ['results' => $results]);
+// }
 
+    // public function destroy($id_kamar){
+    //     $kamar = Kamar::find($id_kamar);
+    //     $kamar->delete();
+    //     return back()->with('success', 'Data Berhasil Dihapus');
+    // }
 }

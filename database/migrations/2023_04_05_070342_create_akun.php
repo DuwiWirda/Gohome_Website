@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('akun', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_akun');
             $table->string('nama', 50);
-            $table->string('email', 25)->unique();
+            $table->string('email', 25);
             $table->string('password', 225);
             $table->enum('level', ['admin','superAdmin']);
             $table->timestamps();

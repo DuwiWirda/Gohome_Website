@@ -28,7 +28,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="Name">Nomor Kamar: </label>
-                    <input type="text" name="nomer_kamar" id="nomer_kamar" class="form-control">
+                    <input type="text" name="nomer_kamar" id="nomer_kamar" class="form-control"maxlength="5">
                 </div>
                 <div class="mb-3">
                     <label for="email">Jenis Kamar : </label>
@@ -40,19 +40,19 @@
                 </div>
                 <div class="mb-3">
                     <label for="deskripsi">Deskripsi : </label>
-                    <textarea name="deskripsi" id="deskripsi" class='form-control' cols="30" rows="10"></textarea>
+                    <textarea name="deskripsi" id="deskripsi" class='form-control' maxlength="100" cols="30" rows="10"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kasur">Jenis Kasur : </label>
                     <select name="jenis_kasur" class="form-control" id="jenis_kasur">
-                      <option value="Twin Bed">Double</option>
-                      <option value="Single Bed">Double Big</option>
-                      <option value="Single Bed">Super King</option>
+                      <option value="double">Double</option>
+                      <option value="double big">Double big</option>
+                      <option value="super king">Super king</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="harga">Harga : </label>
-                    <input type="number" name="harga" id="harga" class="form-control">
+                    <input type="number" name="harga" id="harga" class="form-control" maxlength="11">
                 </div>
                 <div class="mb-3">
                     <label for="gambar_kamar">Gambar : </label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="row mb-3">                
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-success button p-2">Simpan</button>
+                    <button type="submit" class="btn btn-success button p-2" onclick="showSuccessMessage();">Simpan</button>
                     <button class="btn btn-success button p-2" onclick="reset()">Buang</button>
                   </div>
                 </div>
@@ -77,6 +77,44 @@
         </div>        
       </div>
     </section>
+    <script>
+  function showSuccessMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup success";
+    popup.innerText = "Data kamar berhasil ditambahkan.";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+
+  function showFailureMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup failure";
+    popup.innerText = "Gagal menambahkan data kamar";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    // Hilangkan pop-up setelah 3 detik
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+  function reset() {
+    // Reset formulir atau lakukan tindakan yang sesuai
+    // ...
+
+    // Tampilkan pesan sukses
+    showSuccessMessage();
+  }
+</script>
+
     <script>
         let form = document.getElementById('form-petugas');
 

@@ -39,7 +39,7 @@
                     <td>{{ $petugas->password }}</td>
                     <td>{{ $petugas->level }}</td>
                     <td>
-                      <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                      <a href="{{ route('petugas.edit', ['id_akun' => $petugas->id_akun]) }}" class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
                     </td>
                     <td>
                       <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>

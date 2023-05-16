@@ -22,10 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
-Route::middleware(['web'])->group(function () {
-    Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
-});
+// Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
+// Route::middleware(['web'])->group(function () {
+//     Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
+// });
 
 //Route Dashboard
     Route::get('/home', [DashboardController::class, 'index']);
@@ -36,6 +36,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/editkamar/{id_kamar}', [KamarController::class, 'edit'])->name('kamar.edit');
     Route::post('/updatekamar', [KamarController::class, 'update'])->name('kamar.update');
     Route::post('/savekamar', [KamarController::class, 'save'])->name('kamar.save');
+   
 
 //Rote Pengunjung
     Route::get('/pengunjung', [PengunjungController::class, 'index'])->name('pengunjung.index');
@@ -58,4 +59,4 @@ Route::middleware(['web'])->group(function () {
     Route::post('/savetransaksi', [TransaksiController::class, 'save'])->name('transaksi.save');
 
 //Route Laporan
-Route::get('/laporan', [LaporanController::class, 'index']);
+    Route::get('/laporan', [LaporanController::class, 'index']);

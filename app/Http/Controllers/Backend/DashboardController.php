@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $jumlahStandard = $this->KamarTersedia('Standard');
         $jumlahDeluxe = $this->KamarTersedia('Deluxe');
         $jumlahSuite = $this->KamarTersedia('Suite');
@@ -32,26 +33,21 @@ class DashboardController extends Controller
         ];
         return view('backend/layouts.dashboard', $data);
     }
-    public function KamarTersedia($jenis_kamar){
-        $jumlah_kamar = DB::select("select count(*) jumlah, 
-        concat(id_kamar) ids from kamar where id_kamar not in 
-        (select id_kamar from transaksi WHERE status = 'Checkin') and jenis_kamar = '{$jenis_kamar}'");
+    public function KamarTersedia($jenis_kamar)
+    {
+        $jumlah_kamar = DB::select("select count(*) AS jumlah, 
+        GROUP_CONCAT(id_kamar) AS ids from kamar where id_kamar not in 
+        (select id_kamar from transaksi WHERE status = 'Checkin' OR status = 'Proses') 
+        and jenis_kamar = '{$jenis_kamar}'");
         return $jumlah_kamar[0]->jumlah;
     }
 
-    public function KamarTerisi($jenis_kamar){
-        $jumlah_kamar = DB::select("select count(*) jumlah, 
-        concat(id_kamar) ids from kamar where id_kamar in 
-        (select id_kamar from transaksi WHERE status = 'Checkin') and jenis_kamar = '{$jenis_kamar}'");
+    public function KamarTerisi($jenis_kamar)
+    {
+        $jumlah_kamar = DB::select("select count(*) AS jumlah, 
+        GROUP_CONCAT(id_kamar) AS ids from kamar where id_kamar in 
+        (select id_kamar from transaksi WHERE status = 'Checkin' OR status = 'Proses') 
+        and jenis_kamar = '{$jenis_kamar}'");
         return $jumlah_kamar[0]->jumlah;
     }
-
-    // public function Grafik($jenis_kamar){
-    //     $grafik = DB::select("select count(*) from transaksi tran 
-    //     join kamar kamar on tran.id_kamar = kamar.id_kamar 
-    //     where MONTH(tanggal_checkin) = MONTH(now()) 
-    //     and YEAR(tanggal_checkin) = YEAR(CURDATE()) 
-    //     and jenis_kamar = '{$jenis_kamar}'");
-    //     return $grafik[0]->jumlah;
-    // }
 }

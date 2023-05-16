@@ -36,10 +36,9 @@
                     <td>{{ $pengunjung->nik }}</td>
                     <td>{{ $pengunjung->nama_pengunjung }}</td>
                     <td>{{ $pengunjung->email }}</td>
-                    
                     <td>{{ $pengunjung->telepon }}</td>
                     <td>
-                      <a class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                      <a href="{{ route('pengunjung.edit', ['nik' => $pengunjung->nik]) }}" class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
                     </td>
                     <td>
                       <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>

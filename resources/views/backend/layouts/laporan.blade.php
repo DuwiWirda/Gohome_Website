@@ -39,7 +39,6 @@
                     <th scope="col">CheckOut</th>
                     <th scope="col">Status</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">Total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,7 +52,6 @@
                     <td>{{ $transaksi->tanggal_checkout }}</td>
                     <td>{{ $transaksi->status }}</td>
                     <td>{{ $transaksi->harga }}</td>
-                    <td>{{ $transaksi->total}}</td>
                 </tr>
              @endforeach
                 </tbody>

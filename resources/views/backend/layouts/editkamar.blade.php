@@ -1,7 +1,6 @@
 @extends('backend/layouts.main')
 @section('container')
 
-
 <main id="main" class="main">
     <div class="pagetitle">
       <h1>Edit Kamar</h1>
@@ -16,18 +15,16 @@
     <section class="section">
       <div class="row">
         <div class="col-lg-20">
-
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"></h5>
-
               <!-- General Form Elements -->
-              <form class="container" method="POST" id="form-petugas" action="{{ route('kamar.update') }}" enctype="multipart/form-data">
+              <form class="container" method="POST" id="form-kamar" action="{{ route('kamar.update') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id_kamar" value="{{ $kamar->id_kamar }}">
                 <div class="mb-3">
                     <label for="Name">Nomor Kamar: </label>
-                    <input type="text" name="{{ $kamar->nomer_kamar }}" id="nomer_kamar" class="form-control">
+                    <input type="text" name='nomer_kamar' value="{{ $kamar->nomer_kamar }}" id="nomer_kamar" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="email">Jenis Kamar : </label>
@@ -66,7 +63,7 @@
                 </div>
                 <div class="row mb-3">                
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-success button p-2">Simpan</button>
+                    <button type="submit" class="btn btn-success button p-2" onclick="showSuccessMessage();">Simpan</button>
                   </div>
                 </div>
               </form><!-- End General Form Elements -->
@@ -75,6 +72,40 @@
         </div>        
       </div>
     </section>
+    <script>
+  function showSuccessMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup success";
+    popup.innerText = "Data kamar berhasil diubah";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    // Hilangkan pop-up setelah 3 detik
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+
+  function showFailureMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup failure";
+    popup.innerText = "Gagal mengubah data kamar";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    // Hilangkan pop-up setelah 3 detik
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+  function reset() {
+    showSuccessMessage();
+  }
+</script>
     <script>
         let form = document.getElementById('form-petugas');
 

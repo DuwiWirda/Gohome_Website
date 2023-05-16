@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kamar', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_kamar');
             $table->enum('jenis_kamar', ['Standard', 'Deluxe', 'Suite']);
-            $table->string('nomer_kamar', 3);
+            $table->string('nomer_kamar', 5);
             $table->integer('harga');
             $table->string('deskripsi', 100);
-            $table->enum('jenis_kasur', ['Twin Bed', 'Single Bed']);
+            $table->enum('jenis_kasur', ['double', 'double big', 'super king']);
             $table->string('gambar_kamar');
-            $table->string('status_kamar', 10);
+            $table->enum('status_kamar', ['Tersedia', 'Tidak Tersedia']);
             $table->timestamps();
             
         });

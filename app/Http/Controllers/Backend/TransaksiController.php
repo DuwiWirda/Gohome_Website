@@ -15,46 +15,33 @@ class TransaksiController extends Controller
     $transaksi = Transaksi::with('pengunjung','kamar')->get();
     return view('backend/layouts.transaksi', compact('transaksi'));
 }
+
 public function add(){
     $pengunjung = Pengunjung::all();
-    $kamar = Kamar::all();
+    $kamar = Kamar::where('status_kamar','=','Tersedia')->get();
     return view('backend/layouts.addtransaksi', compact(['pengunjung', 'kamar']));
 }
+
 public function save(Request $request){
     $transaksi = new Transaksi();
-    $transaksi->id_transkasi = $request->id_transaksi;
+    $kamar = Kamar::findOrFail($request->id_kamar);
+    $transaksi->id_transaksi = $request->id_transaksi;
     $transaksi->tanggal_checkin = $request->tanggal_checkin;
     $transaksi->tanggal_checkout = $request->tanggal_checkout;
     $transaksi->status = $request->status;
     $transaksi->harga = $request->harga;
     $transaksi->total = $request->total;
-    $transaksi->nik = $request->pengunjung;
-    $transaksi->id_kamar = $request->kamar;
+    $transaksi->nik = $request->nik;
+    $transaksi->id_kamar = $request->jenis_kamar;
+    $kamar->status_kamar = 'Tidak Tersedia';
+    $kamar->update();
     $transaksi->save();
+    //Ubah status kamar jadi tidak tersedia sesuai dengan id_kamar
     return redirect()->route('transaksi.index');
 }
 
-// public function edit($id){
-//     $transaksi = Transaksi::findOrFail($id);
-//     $pengunjung = Pengunjung::all();
-//     $kamar = Kamar::all();
-
-//     return view('backend/layouts.edittransaksi', compact(['transaksi', 'pengunjung', 'kamar']));
-// }
-
 public function update(Request $request){
     $transaksi = Transaksi::findOrFail($request->id);
-
-    // if($request->file('bukti_tf')){
-    //     $validatedData = $request->validate([
-    //         'bukti_tf' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-    //     ]);
-
-    //     $foto = $request->file('bukti')->getClientOriginalName();
-    //     $path = $request->file('bukti')->move('images/resi/' , $foto);
-    //     $transaksi->bukti = $foto;
-    // }
-
     $transaksi->id_transkasi = $request->id_transaksi;
     $transaksi->tanggal = $request->tanggal;
     $transaksi->nik = $request->pengunjung;
@@ -64,9 +51,7 @@ public function update(Request $request){
     $transaksi->status = $request->status;
     $transaksi->harga = $request->harga;
     $transaksi->total = $request->total;
-
-    $transaksi->save();
-
+    $transaksi->update();
     return redirect()->route('transaksi.index');
 }
 }
