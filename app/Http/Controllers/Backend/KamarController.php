@@ -85,9 +85,9 @@ class KamarController extends Controller
 //     return view('search', ['results' => $results]);
 // }
 
-    // public function destroy($id_kamar){
-    //     $kamar = Kamar::find($id_kamar);
-    //     $kamar->delete();
-    //     return back()->with('success', 'Data Berhasil Dihapus');
-    // }
+    public function delete($id_kamar){
+        $kamar = Kamar::find($id_kamar);
+        $kamar->delete();
+        return view('backend/layouts.kamar', compact(['kamar']));
+    }
 }

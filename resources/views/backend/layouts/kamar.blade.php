@@ -44,10 +44,18 @@
                       <a href="{{ route('kamar.edit', ['id_kamar' => $kamar->id_kamar]) }}" class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
                     </td>
                     <td>
+
+                    <td>
                     
                       <a  class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>
                      
                     </td>  
+                    <!-- <form action="{{ route('kamar.destroy', $kamar->id) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></button>
+                    </form> -->
+                  </td>
                 </tr>
              @endforeach
                 </tbody>

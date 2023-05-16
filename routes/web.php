@@ -36,6 +36,8 @@ Route::get('/login', [LoginController::class, 'index']);
     Route::get('/editkamar/{id_kamar}', [KamarController::class, 'edit'])->name('kamar.edit');
     Route::post('/updatekamar', [KamarController::class, 'update'])->name('kamar.update');
     Route::post('/savekamar', [KamarController::class, 'save'])->name('kamar.save');
+    Route::delete('/deletekamar', [KamarController::class, 'delete'])->name('kamar.delete');
+   
    
 
 //Rote Pengunjung
