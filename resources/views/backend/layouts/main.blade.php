@@ -73,11 +73,8 @@
             </li>
             <li>
 
-            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="dropdown-item d-flex align-items-center"><i
-                                        class="bi bi-box-arrow-right"></i> Logout</button>
-                            </form>
+                                <a href="{{ route('logout') }}" type="submit" class="dropdown-item d-flex align-items-center"><i
+                                        class="bi bi-box-arrow-right"></i> Logout</a>
               
               </a>
             </li>

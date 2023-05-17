@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Petugas extends Model
 {
-    protected $table = 'akun';
-    protected $primaryKey = 'id_akun';
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'id_akun', 'email', 'password','nama','level'
+        'id', 
+        'name', 
+        'email', 
+        'password',
+        'role', 
+        'email_verified_at', 
+        'remember_token'
     ];
 }

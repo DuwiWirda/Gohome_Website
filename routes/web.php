@@ -1,10 +1,11 @@
 <?php
+
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\KamarController;
 use App\Http\Controllers\Backend\LaporanController;
-use App\Http\Controllers\Backend\LoginController;
 use App\Http\Controllers\Backend\PengunjungController;
 use App\Http\Controllers\Backend\PetugasController;
 use App\Http\Controllers\Backend\TransaksiController;
@@ -22,16 +23,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/login', [LoginController::class, 'index']);
+// Route::get('/', [LoginController::class, 'index']);
 // Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
 // Route::middleware(['web'])->group(function () {
 //     Route::post('/login', 'AuthController@login_process')->name('auth.login_process');
 // });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/', fn () => redirect()->route('login'));
+// Route::get('/', fn () => redirect()->route('login')compo);
 
+Route::get('/',[AuthController::class,'index'])->name('login');
+Route::get('logout',[AuthController::class,'logout'])->name('logout');
+Route::post('login_process',[AuthController::class,'login_process'])->name('login_process');
 Route::get('/unauthorized', function () {
     return view('auth.403');
 })->name('unauthorized');
@@ -41,13 +45,13 @@ Route::middleware(['auth'])->group(function () {
         //Route Petugas
         Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
         Route::get('/addpetugas', [PetugasController::class, 'add'])->name('petugas.add');
-        Route::get('/editpetugas/{id_akun}', [PetugasController::class, 'edit'])->name('petugas.edit');
+        Route::get('/editpetugas/{id}', [PetugasController::class, 'edit'])->name('petugas.edit');
         Route::post('/savepetugas', [PetugasController::class, 'save'])->name('petugas.save');
         Route::post('/updatepetugas', [PetugasController::class, 'update'])->name('petugas.update');
     });
 
 //Route Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 //Route Kamar
     Route::get('/kamar', [KamarController::class, 'index'])->name('kamar.index');
@@ -55,23 +59,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/editkamar/{id_kamar}', [KamarController::class, 'edit'])->name('kamar.edit');
     Route::post('/updatekamar', [KamarController::class, 'update'])->name('kamar.update');
     Route::post('/savekamar', [KamarController::class, 'save'])->name('kamar.save');
-    Route::delete('/deletekamar', [KamarController::class, 'delete'])->name('kamar.delete');
-   
-   
-
+    
 //Rote Pengunjung
     Route::get('/pengunjung', [PengunjungController::class, 'index'])->name('pengunjung.index');
     Route::get('/addpengunjung', [PengunjungController::class, 'add'])->name('pengunjung.add');
     Route::get('/editpengunjung/{nik}', [PengunjungController::class, 'edit'])->name('pengunjung.edit');
     Route::post('/savepengunjung', [PengunjungController::class, 'save'])->name('pengunjung.save');
     Route::post('/updatepengunjung', [PengunjungController::class, 'update'])->name('pengunjung.update');
-
-//Route Petugas
-    Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
-    Route::get('/addpetugas', [PetugasController::class, 'add'])->name('petugas.add');
-    Route::get('/editpetugas/{id_akun}', [PetugasController::class, 'edit'])->name('petugas.edit');
-    Route::post('/savepetugas', [PetugasController::class, 'save'])->name('petugas.save');
-    Route::post('/updatepetugas', [PetugasController::class, 'update'])->name('petugas.update');
 
 //Route Transaksi
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');

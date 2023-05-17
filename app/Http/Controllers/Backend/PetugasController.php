@@ -27,11 +27,12 @@ class PetugasController extends Controller
     public function save(Request $request)
     {
         $petugas = new Petugas();
-        $petugas->id_akun = $request->id_akun;
+        $petugas->id = $request->id;
+        $petugas->name = $request->name;
         $petugas->email = $request->email;
-        $petugas->nama = $request->nama;
         $petugas->password = $request->password;
-        $petugas->level = $request->level;
+        $petugas->role = $request->role;
+        $petugas->remember_token = $request->remember_token;
         $petugas->save();
         return redirect()->route('petugas.index')
         ->with('success','Data petugas berhasil disimpan');
@@ -44,12 +45,13 @@ class PetugasController extends Controller
     }
 
     public function update(Request $request){
-        $petugas = Petugas::findOrFail($request->id_akun);
-        $petugas->id_akun = $request->id_akun;
+        $petugas = Petugas::findOrFail($request->id);
+        $petugas->id = $request->id;
+        $petugas->name = $request->name;
         $petugas->email = $request->email;
-        $petugas->nama = $request->nama;
         $petugas->password = $request->password;
-        $petugas->level = $request->level;
+        $petugas->role = $request->role;
+        $petugas->remember_token = $request->remember_token;
         $petugas->update();
         return redirect()->route('petugas.index');
     }

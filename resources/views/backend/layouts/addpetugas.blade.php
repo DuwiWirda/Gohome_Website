@@ -27,7 +27,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="Name">Nama Petugas: </label>
-                    <input type="text" name="nama" id="name" class="form-control" maxlength="50">
+                    <input type="text" name="name" id="name" class="form-control" maxlength="50">
                 </div>
                 <div class="mb-3">
                     <label for="email">Email : </label>
@@ -38,8 +38,8 @@
                     <input type="text" name="password" id="password" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="harga">Jabatan : </label>
-                    <select name="level" class="form-control" id="level">
+                    <label for="role">Jabatan : </label>
+                    <select name="role" class="form-control" id="level">
                       <option value="Admin">Admin</option>
                       <option value="SuperAdmin">Super Admin</option>
                     </select>

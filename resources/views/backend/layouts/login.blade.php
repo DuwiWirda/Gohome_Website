@@ -8,11 +8,10 @@
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
           </div>
 
-          <form method="POST" action="{{ route('auth.login_process') }}">
+          <form method="POST" action="{{ route('login_process') }}">
            @csrf
 
           <div class="form-outline mb-4">
@@ -25,9 +24,8 @@
               placeholder="Masukkan Password" />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
-          <div class="text-center text-lg-start mt-4 pt-2">
-          <a href="/home"><button type="button"
-              style="padding-left: 2.5rem; padding-right: 2.5rem; background-color: #005F63; color:white">Login</button></a> 
+          <div class="text-center text-lg-start mt-4 pt-2"><button type="submit"
+              style="padding-left: 2.5rem; padding-right: 2.5rem; background-color: #005F63; color:white">Login</button>
           </div>
         </form>
       </div>

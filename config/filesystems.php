@@ -73,4 +73,13 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    'disks' => [
+        'public' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'url' => env('APP_URL').'/images',
+            'visibility' => 'public',
+        ],
+    ],
+
 ];

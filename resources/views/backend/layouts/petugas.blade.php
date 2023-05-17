@@ -26,7 +26,6 @@
                     
                     <th scope="col">Nama Petugas</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Password</th>
                     <th scope="col">Jabatan</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Hapus</th>
@@ -35,12 +34,12 @@
                 <tbody>
                 @foreach ($petugas as $petugas)
                 <tr>
-                    <td>{{ $petugas->nama }}</td>
+                    <td>{{ $petugas->name }}</td>
                     <td>{{ $petugas->email }}</td>
-                    <td>{{ $petugas->password }}</td>
-                    <td>{{ $petugas->level }}</td>
+                    <td>{{ $petugas->role }}</td>
                     <td>
-                      <a href="{{ route('petugas.edit', ['id_akun' => $petugas->id_akun]) }}" class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
+                    <a href="{{ route('petugas.edit', ['id_akun' => $petugas->id]) }}"class="btn btn-success button p-2"><i
+                                                class="bi bi-pencil"></i></a>
                     </td>
                     <td>
                       <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>

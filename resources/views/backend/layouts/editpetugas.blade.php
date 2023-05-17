@@ -22,24 +22,24 @@
               <!-- General Form Elements -->
               <form class="container" method="POST" id="form-petugas" action="{{ route('petugas.update') }}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="id_akun" value="{{ $petugas->id_akun }}">
+                <input type="hidden" name="id" value="{{ $petugas->id }}">
                 <div class="mb-3">
                     <label for="Name">Nama Petugas: </label>
-                    <input type="text" name="nama" value="{{ $petugas->nama }}" id="nama" class="form-control">
+                    <input type="text" name="name" value="{{ $petugas->name }}" id="nama" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="email">Email : </label>
                     <input type="email" name="email" value="{{ $petugas->email }}" id="email" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="Passwprd">Password : </label>
+                    <label for="Password">Password : </label>
                     <input type="text" name="password" value="{{ $petugas->password }}" id="password" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="level">Jabatan : </label>
-                    <select name="level" class="form-control" id="level">
-                      <option value="Admin" {{ $petugas->level == "Admin" ? 'selected' : '' }}>Admin</option>
-                      <option value="SuperAdmin" {{ $petugas->level == "SuperAdmin" ? 'selected' : '' }}>SuperAdmin</option>
+                    <label for="role">Jabatan : </label>
+                    <select name="role" class="form-control" id="role">
+                      <option value="Admin" {{ $petugas->role == "Admin" ? 'selected' : '' }}>Admin</option>
+                      <option value="SuperAdmin" {{ $petugas->role == "SuperAdmin" ? 'selected' : '' }}>SuperAdmin</option>
                     </select>
                 </div>
                 <div class="row mb-3">                

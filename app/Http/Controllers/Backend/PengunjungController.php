@@ -43,18 +43,31 @@ class PengunjungController extends Controller
         ->with('success','Data pengunjung berhasil disimpan');
     }
     
-    public function update(Request $request){
-        $pengunjung = Pengunjung::findOrFail($request->nik);
-        $pengunjung->nik = $request->nik;
-        $pengunjung->nama_pengunjung = $request->nama_pengunjung;
-        $pengunjung->email = $request->email;
-        $pengunjung->password = $request->password;
-        $pengunjung->telepon = $request->telepon;
-        $pengunjung->save();
-        return redirect()->route('pengunjung.index');
-    }
+    // public function update(Request $request){
+    //     $pengunjung = Pengunjung::findOrFail($request->nik);
+    //     $pengunjung->nik = $request->nik;
+    //     $pengunjung->nama_pengunjung = $request->nama_pengunjung;
+    //     $pengunjung->email = $request->email;
+    //     $pengunjung->password =  Hash::make($request->password);
+    //     $pengunjung->telepon = $request->telepon;
+    //     $pengunjung->update();
+    //     return redirect()->route('pengunjung.index');
+    // }
+            public function update(Request $request)
+        {
+            $pengunjung = Pengunjung::findOrFail($request->nik);
+            $pengunjung->nik = $request->nik;
+            $pengunjung->nama_pengunjung = $request->nama_pengunjung;
+            $pengunjung->email = $request->email;
 
-    public function destroy($nik){
-        
-    }
+            // Cek apakah password diubah
+            if ($request->password) {
+                $pengunjung->password =  Hash::make($request->password);
+            }
+            $pengunjung->telepon = $request->telepon;
+            $pengunjung->update();
+            return redirect()->route('pengunjung.index');
+        }
+            public function destroy($nik){   
+            }
 }

@@ -52,13 +52,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="gambar_kamar">Gambar : </label>
-                    <input type="file" name="gambar_kamar" id="gambar_kamar" class="form-control">
+                    <input type="file" value="{{ $kamar->gambar_kamar }}"name="gambar_kamar" id="gambar_kamar" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="email">Status : </label>
-                    <select name="status_kamar" class="form-control" id="status_kamar">
+                    <select type="text" value="{{ $kamar->status_kamar }}" name="status_kamar" class="form-control" id="status_kamar">
                       <option value="Tersedia">Tersedia</option>
-                      <option value="Tidak Tesedia">Tidak Tersedia</option>
                     </select>
                 </div>
                 <div class="row mb-3">                

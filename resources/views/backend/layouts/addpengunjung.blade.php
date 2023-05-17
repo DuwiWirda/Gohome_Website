@@ -24,7 +24,7 @@
               <h5 class="card-title"></h5>
 
               <!-- General Form Elements -->
-              <form class="container" method="POST" id="form-petugas" action="{{ route('pengunjung.save') }}">
+              <form class="container" method="POST" id="form-pengunjung" action="{{ route('pengunjung.save') }}">
                 @csrf
                 <div class="mb-3">
                     <label for="Nik">NIK : </label>

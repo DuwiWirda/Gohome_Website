@@ -24,7 +24,7 @@
               <h5 class="card-title"></h5>
 
               <!-- General Form Elements -->
-              <form class="container" method="POST" id="form-petugas" action="{{ route('pengunjung.update') }}">
+              <form class="container" method="POST" id="form-pengunjung" action="{{ route('pengunjung.update') }}">
                 @csrf
                 <input type="hidden" name="nik" value="{{ $pengunjung->nik }}">
                 <div class="mb-3">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="Password">Password : </label>
-                    <input type="password" name="password" value="{{ $pengunjung->password }}" id="password" class="form-control">
+                    <input type="password" name="password" value="{{ old ($pengunjung->password) }}" id="password" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="Phone">No.Hp : </label>

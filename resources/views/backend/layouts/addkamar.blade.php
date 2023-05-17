@@ -24,7 +24,7 @@
               <h5 class="card-title"></h5>
 
               <!-- General Form Elements -->
-              <form class="container" method="POST" id="form-petugas" action="{{ route('kamar.save') }}" enctype="multipart/form-data">
+              <form class="container" method="POST" id="form-kamar" action="{{ route('kamar.save') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="Name">Nomor Kamar: </label>
@@ -62,7 +62,6 @@
                     <label for="email">Status : </label>
                     <select name="status_kamar" class="form-control" id="status_kamar">
                       <option value="Tersedia">Tersedia</option>
-                      <option value="Tidak Tersedia">Tidak Tersedia</option>
                     </select>
                 </div>
                 <div class="row mb-3">                
