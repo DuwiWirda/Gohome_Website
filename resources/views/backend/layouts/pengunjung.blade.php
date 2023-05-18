@@ -8,14 +8,17 @@
 
 <main id="main" class="main">
   
-<div class="pagetitle">
-  <h1>Data Pengunjung
-  <input class="search" type="text" placeholder="Cari..." required>	
-  <input class="button" type="button" value="Cari">
-  <a href="{{ route('pengunjung.add') }}" class="btn btn-success button p-2"><i
-                        class="bi bi-person-plus"></i></a>
+    <div class="pagetitle" style="display: flex; align-items: center; justify-content: space-between;">
+      <h1>Data Pengunjung</h1>
+      <form action="{{ route('pengunjung.search') }}" method="GET" style="margin-left: 25px;">
+        <input class="search" type="text" name="keyword" placeholder="Cari nama . . . " required>
+      </form>
+      <a href="{{ route('pengunjung.refresh') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-arrow-clockwise"></i></a>
+      <a href="{{ route('pengunjung.add') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-person-plus"></i></a>
+    </div>
+</div>
 
-</div><!-- End Page Title -->
+<!-- End Page Title -->
 <section class="section pengunjung">
 <div class="card">
             <div class="card-body">
@@ -42,7 +45,11 @@
                       <a href="{{ route('pengunjung.edit', ['nik' => $pengunjung->nik]) }}" class="btn btn-success button p-2"><i class="bi bi-pencil"></i></a>
                     </td>
                     <td>
-                      <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>
+                    <form action="{{ route('pengunjung.destroy', ['nik' => $pengunjung->nik]) }}" method="POST" style="display: inline;">
+                      @csrf
+                      @method('DELETE')
+                      <button type="delete" class="btn btn-success button p-2" onclick="showSuccessMessage();"><i class="bi bi-trash-fill"></i></button>
+                    </form>
                     </td>  
                 </tr>
              @endforeach
@@ -52,5 +59,20 @@
             </div>
           </div>
 </section>
+<script>
+  function showSuccessMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup success";
+    popup.innerText = "Data pengunjung berhasil dihapus.";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+  </script>
 </main><!-- End #main -->
 @endsection

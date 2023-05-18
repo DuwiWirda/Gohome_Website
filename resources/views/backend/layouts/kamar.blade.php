@@ -4,12 +4,17 @@
 <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
 <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 <main id="main" class="main">
-<div class="pagetitle">
-  <h1>Data Kamar    
-  <input class="search" type="text" placeholder="Cari..." required>	
-  <input class="button" type="button" value="Cari">
-  <a href="{{ route('kamar.add') }}" class="btn btn-success button p-2"><i class="bi bi-person-plus"></i></a>
-</div><!-- End Page Title -->
+
+    <div class="pagetitle" style="display: flex; align-items: center; justify-content: space-between;">
+          <h1>Data Kamar</h1>
+          <form action="{{ route('kamar.search') }}" method="GET" style="margin-left: 25px;">
+            <input class="search" type="text" name="keyword" placeholder="Cari kamar . . . " required>
+          </form>
+          <a href="{{ route('kamar.refresh') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-arrow-clockwise"></i></a>
+          <a href="{{ route('kamar.add') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-person-plus"></i></a>
+        </div>
+    </div>
+
 <section class="section kamar">
 <div class="card">
             <div class="card-body">
@@ -46,7 +51,11 @@
                                                 class="bi bi-pencil"></i></a>
                     </td>
                     <td>  
-                      <a  class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a> 
+                    <form action="{{ route('kamar.destroy', ['id_kamar' => $kamar->id_kamar]) }}" method="POST" style="display: inline;">
+                      @csrf
+                      @method('DELETE')
+                      <button type="delete" class="btn btn-success button p-2" onclick="showSuccessMessage();"><i class="bi bi-trash-fill"></i></button>
+                    </form>
                     </td>  
                   </td>
                 </tr>
@@ -57,5 +66,21 @@
             </div>
           </div>
 </section>
+<script>s
+  function showSuccessMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup success";
+    popup.innerText = "Data kamar berhasil dihapus.";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+  </script>
+
 </main><!-- End #main -->
 @endsection

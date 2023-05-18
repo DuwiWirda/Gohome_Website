@@ -7,14 +7,16 @@
 
 
 <main id="main" class="main">
-<div class="pagetitle">
-  <h1>Data Petugas
-  <input class="search" type="text" placeholder="Cari..." required>	
-  <input class="button" type="button" value="Cari">
-  <a href="{{ route('petugas.add') }}" class="btn btn-success button p-2"><i
-                        class="bi bi-person-plus"></i></a>
-  </h1>
-</div><!-- End Page Title -->
+
+<div class="pagetitle" style="display: flex; align-items: center; justify-content: space-between;">
+            <h1>Data Petugas</h1>
+            <form action="{{ route('petugas.search') }}" method="GET" style="margin-left: 25px;">
+              <input class="search" type="text" name="keyword" placeholder="Cari transaksi . . . " required>
+            </form>
+            <a href="{{ route('petugas.refresh') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-arrow-clockwise"></i></a>
+            <a href="{{ route('petugas.add') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-person-plus"></i></a>
+          </div>
+      </div>
 
 <section class="section petugas">
 <div class="card">
@@ -38,11 +40,15 @@
                     <td>{{ $petugas->email }}</td>
                     <td>{{ $petugas->role }}</td>
                     <td>
-                    <a href="{{ route('petugas.edit', ['id_akun' => $petugas->id]) }}"class="btn btn-success button p-2"><i
+                    <a href="{{ route('petugas.edit', ['id' => $petugas->id]) }}"class="btn btn-success button p-2"><i
                                                 class="bi bi-pencil"></i></a>
                     </td>
                     <td>
-                      <a class="btn btn-success button p-2"><i class="bi bi-trash-fill"></i></a>
+                    <form action="{{ route('petugas.destroy', ['id' => $petugas->id]) }}" method="POST" style="display: inline;">
+                      @csrf
+                      @method('DELETE')
+                      <button type="delete" class="btn btn-success button p-2" onclick="showSuccessMessage();"><i class="bi bi-trash-fill"></i></button>
+                    </form>
                     </td>   
                 </tr>
              @endforeach
@@ -52,5 +58,20 @@
             </div>
           </div>
 </section>
+<script>
+  function showSuccessMessage() {
+    // Buat elemen pop-up
+    var popup = document.createElement("div");
+    popup.className = "popup success";
+    popup.innerText = "Data petugas berhasil dihapus.";
+
+    // Tambahkan pop-up ke dalam body
+    document.body.appendChild(popup);
+
+    setTimeout(function() {
+      popup.remove();
+    }, 30000000);
+  }
+  </script>
 </main><!-- End #main -->
 @endsection

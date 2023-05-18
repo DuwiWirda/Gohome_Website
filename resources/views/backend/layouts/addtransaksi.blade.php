@@ -27,7 +27,7 @@
             <h5 class="card-title"></h5>
 
             <!-- General Form Elements -->
-            <form class="container" method="POST" id="form-transaksi" action="{{ route('transaksi.save') }}">
+            <form class="container" method="POST" id="form-transaksi" action="{{ route('transaksi.save') }}" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
                 <label for="Name">Pilih Pengunjung : </label>
@@ -41,7 +41,7 @@
                 <label for="Name">Pilih Kamar : </label>
                 <select name="jenis_kamar" id="jenis_kamar" class="form-control">
                   @foreach($kamar as $kamar)
-                  <option value="{{ $kamar->id_kamar }}">{{ '| ' . $kamar->jenis_kamar . '| ' . $kamar->jenis_kasur . '| ' . $kamar->nomer_kamar }} </option>
+                  <option value="{{ $kamar->id_kamar }}">{{ '| ' . $kamar->jenis_kamar . '| ' . $kamar->jenis_kasur . '| ' . $kamar->nomer_kamar . '| ' . $kamar->status_kamar}} </option>
                   @endforeach
                 </select>
               </div>

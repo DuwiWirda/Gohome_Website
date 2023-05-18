@@ -7,15 +7,16 @@
 
 
 <main id="main" class="main">
-<div class="pagetitle">
-  <h1>Data Transaksi
-  <input class="search" type="text" placeholder="Cari..." required>	
-  <input class="button" type="button" value="Cari">
-  <a href="{{ route('transaksi.add') }}" class="btn btn-success button p-2"><i
-                        class="bi bi-person-plus"></i></a>
-  <!-- <button type="buttontambah" class="buttontambah"><i class="bi bi-person-plus"></i></button> -->
-  </h1>
-</div><!-- End Page Title -->
+
+  <div class="pagetitle" style="display: flex; align-items: center; justify-content: space-between;">
+            <h1>Data Transaksi</h1>
+            <form action="{{ route('transaksi.search') }}" method="GET" style="margin-left: 25px;">
+              <input class="search" type="text" name="keyword" placeholder="Cari transaksi . . . " required>
+            </form>
+            <a href="{{ route('transaksi.refresh') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-arrow-clockwise"></i></a>
+            <a href="{{ route('transaksi.add') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-person-plus"></i></a>
+          </div>
+      </div>
 
 <section class="section transaksi">
 <div class="card">
@@ -24,9 +25,9 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">NIK</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Kamar</th>
+                    <th scope="col">No Kamar</th>
                     <th scope="col">CheckIn</th>
                     <th scope="col">CheckOut</th>
                     <th scope="col">Status</th>
@@ -37,9 +38,9 @@
                 <tbody>
                 @foreach ($transaksi as $transaksi)
                 <tr>
-                    <td>{{ $transaksi->nik }}</td>
                     <td>{{ $transaksi->pengunjung->nama_pengunjung }}</td>
                     <td>{{ $transaksi->kamar->jenis_kamar }}</td>
+                    <td>{{ $transaksi->kamar->nomer_kamar }}</td>
                     <td>{{ $transaksi->tanggal_checkin }}</td>
                     <td>{{ $transaksi->tanggal_checkout }}</td>
                     <td>{{ $transaksi->status }}</td>

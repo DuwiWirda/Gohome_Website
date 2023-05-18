@@ -39,8 +39,8 @@ class PetugasController extends Controller
     }
     
 
-    public function edit($id_akun){
-        $petugas = Petugas::findOrFail($id_akun);
+    public function edit($id){
+        $petugas = Petugas::findOrFail($id);
         return view('backend/layouts.editpetugas', compact(['petugas']));
     }
 
@@ -55,8 +55,28 @@ class PetugasController extends Controller
         $petugas->update();
         return redirect()->route('petugas.index');
     }
-    
-    public function destroy($id_akun){
+    public function destroy($id)
+            {
+                $petugas = Petugas::find($id);
+                if (!$petugas) {
+                    return redirect()->route('petugas.index')->with('error');
+                }
+                $petugas->delete();
+                return redirect()->route('petugas.index')->with('success');
+            }
         
-    }
+            public function search(Request $request)
+            {
+                $keyword = $request->input('keyword'); // Mengambil inputan keyword dari form pencarian
+                // Lakukan pencarian berdasarkan keyword
+                $petugas = Petugas::where('name', 'LIKE', '%' . $keyword . '%')->get();
+                return view('backend/layouts.petugas', compact(['petugas']));
+            }
+
+            public function refresh()
+            {
+                // Mengambil data pengunjung tanpa melakukan pencarian atau filter
+                $petugas = Petugas::all();
+                return view('backend/layouts.petugas', compact(['petugas']));
+            }
 }

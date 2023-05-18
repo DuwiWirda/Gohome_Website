@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\ApiModel\Kamar;
-use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -74,4 +73,31 @@ class KamarController extends Controller
         return redirect()->route('kamar.index');
     }
 
-}
+        public function destroy($id_kamar)
+        {
+            $kamar = Kamar::find($id_kamar);
+            if (!$kamar) {
+                return redirect()->route('kamar.index')->with('error');
+            }
+            $kamar->delete();
+            return redirect()->route('kamar.index')->with('success');
+        }
+
+
+        public function search(Request $request)
+            {
+                $keyword = $request->input('keyword'); // Mengambil inputan keyword dari form pencarian
+                // Lakukan pencarian berdasarkan keyword
+                $kamar = Kamar::where('jenis_kamar', 'LIKE', '%' . $keyword . '%')->get();
+                return view('backend/layouts.kamar', compact(['kamar']));
+            }
+
+            public function refresh()
+            {
+                // Mengambil data pengunjung tanpa melakukan pencarian atau filter
+                $kamar = Kamar::all();
+                return view('backend/layouts.kamar', compact(['kamar']));
+            }
+
+    }
+

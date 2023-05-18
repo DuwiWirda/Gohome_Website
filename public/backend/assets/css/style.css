@@ -1093,7 +1093,7 @@ form {
   margin:25px auto;
 }
 .search {
-  padding:1px 8px;
+  padding:5px 15px;
   background:rgb(255, 255, 255);
   border:0px solid  #E2F3F4;
   font-size:smaller;
@@ -1114,9 +1114,7 @@ form {
   color: #E2F3F4;
 }
 .buttontambah {
-  position:relative;
-  padding:4px 10px;
-  left:-1px;
+  padding:5px 5px;
   border:2px solid #E2F3F4;
   background-color:#005F63;
   color:#fafafa;

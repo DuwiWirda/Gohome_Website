@@ -40,19 +40,9 @@ class PengunjungController extends Controller
         $pengunjung->telepon = $request->telepon;
         $pengunjung->save();
         return redirect()->route('pengunjung.index')
-        ->with('success','Data pengunjung berhasil disimpan');
+        ->with('success');
     }
-    
-    // public function update(Request $request){
-    //     $pengunjung = Pengunjung::findOrFail($request->nik);
-    //     $pengunjung->nik = $request->nik;
-    //     $pengunjung->nama_pengunjung = $request->nama_pengunjung;
-    //     $pengunjung->email = $request->email;
-    //     $pengunjung->password =  Hash::make($request->password);
-    //     $pengunjung->telepon = $request->telepon;
-    //     $pengunjung->update();
-    //     return redirect()->route('pengunjung.index');
-    // }
+
             public function update(Request $request)
         {
             $pengunjung = Pengunjung::findOrFail($request->nik);
@@ -68,6 +58,30 @@ class PengunjungController extends Controller
             $pengunjung->update();
             return redirect()->route('pengunjung.index');
         }
-            public function destroy($nik){   
+        
+            public function destroy($nik)
+            {
+                $pengunjung = Pengunjung::find($nik);
+                if (!$pengunjung) {
+                    return redirect()->route('pengunjung.index')->with('error');
+                }
+                $pengunjung->delete();
+                return redirect()->route('pengunjung.index')->with('success');
             }
+
+            public function search(Request $request)
+            {
+                $keyword = $request->input('keyword'); // Mengambil inputan keyword dari form pencarian
+                // Lakukan pencarian berdasarkan keyword
+                $pengunjung = Pengunjung::where('nama_pengunjung', 'LIKE', '%' . $keyword . '%')->get();
+                return view('backend/layouts.pengunjung', compact(['pengunjung']));
+            }
+
+            public function refresh()
+            {
+                // Mengambil data pengunjung tanpa melakukan pencarian atau filter
+                $pengunjung = Pengunjung::all();
+                return view('backend/layouts.pengunjung', compact(['pengunjung']));
+            }
+
 }

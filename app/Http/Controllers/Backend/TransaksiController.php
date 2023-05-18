@@ -34,7 +34,7 @@ public function save(Request $request){
     $transaksi->nik = $request->nik;
     $transaksi->id_kamar = $request->jenis_kamar;
     $kamar->status_kamar = 'Tidak Tersedia';
-    $kamar->update();
+    $kamar->save();
     $transaksi->save();
     //Ubah status kamar jadi tidak tersedia sesuai dengan id_kamar
     return redirect()->route('transaksi.index');
@@ -54,6 +54,22 @@ public function update(Request $request){
     $transaksi->update();
     return redirect()->route('transaksi.index');
 }
+
+            public function search(Request $request)
+            {
+                $keyword = $request->input('keyword'); // Mengambil inputan keyword dari form pencarian
+                // Lakukan pencarian berdasarkan keyword
+                $transaksi = Transaksi::where('status', 'LIKE', '%' . $keyword . '%')->get();
+                return view('backend/layouts.transaksi', compact(['transaksi']));
+            }
+            public function refresh()
+            {
+                // Mengambil data pengunjung tanpa melakukan pencarian atau filter
+                $transaksi = Transaksi::all();
+                return view('backend/layouts.transaksi', compact(['transaksi']));
+            }
+
+
 }
 
 
