@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\LaporanController;
 use App\Http\Controllers\Backend\PengunjungController;
 use App\Http\Controllers\Backend\PetugasController;
 use App\Http\Controllers\Backend\TransaksiController;
+use App\Http\Controllers\Backend\ExportController;
 use App\Models\Pengunjung;
 use Illuminate\Support\Facades\Route;
 
@@ -90,4 +91,5 @@ Route::middleware(['auth'])->group(function () {
 //Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index']);
     Route::post('/filterlaporan', [LaporanController::class, 'filter'])->name('laporan.filter');
+    Route::get('/export-transaksi', [ExportController::class, 'exportTransaksi'])->name('export.transaksi');
 });

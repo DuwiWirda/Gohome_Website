@@ -25,7 +25,7 @@
                         <option value="7">Desember</option>
                       </select>
           </form>
-          <a href="{{ route('kamar.refresh') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-download"></i></a>
+          <a href="{{ route('export.transaksi') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-download"></i></a>
         </div><!-- End Page Title -->
 <section class="section laporan">
 <div class="card">

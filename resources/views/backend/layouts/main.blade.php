@@ -78,8 +78,8 @@
                         <li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="dropdown-item d-flex align-items-center"><i
-                                        class="bi bi-box-arrow-right"></i> Logout</button>
+                                <a href="{{route('logout')}}" class="dropdown-item d-flex align-items-center"><i
+                                    class="bi bi-box-arrow-right"></i> Logout</button>
                             </form>
                         </li>
                     </ul><!-- End Profile Dropdown Items -->
