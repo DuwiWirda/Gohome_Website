@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id('id_transaksi');
-            $table->string('tanggal_checkin');
-            $table->string('tanggal_checkout');
+            $table->string('tanggal_checkin',20);
+            $table->string('tanggal_checkout',20);
             $table->enum('status', ['Proses', 'Checkin', 'Checkout']);
             $table->integer('total');
             $table->unsignedBigInteger('nik');

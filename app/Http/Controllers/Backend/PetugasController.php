@@ -26,6 +26,13 @@ class PetugasController extends Controller
 
     public function save(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
         $petugas = new Petugas();
         $petugas->id = $request->id;
         $petugas->name = $request->name;
@@ -37,7 +44,7 @@ class PetugasController extends Controller
         return redirect()->route('petugas.index')
         ->with('success','Data petugas berhasil disimpan');
     }
-    
+
 
     public function edit($id){
         $petugas = Petugas::findOrFail($id);
@@ -45,6 +52,11 @@ class PetugasController extends Controller
     }
 
     public function update(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
+        ]);
         $petugas = Petugas::findOrFail($request->id);
         $petugas->id = $request->id;
         $petugas->name = $request->name;
@@ -64,7 +76,7 @@ class PetugasController extends Controller
                 $petugas->delete();
                 return redirect()->route('petugas.index')->with('success');
             }
-        
+
             public function search(Request $request)
             {
                 $keyword = $request->input('keyword'); // Mengambil inputan keyword dari form pencarian

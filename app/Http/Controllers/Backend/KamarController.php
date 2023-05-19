@@ -26,6 +26,14 @@ class KamarController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'nomer_kamar' => 'required',
+            'jenis_kamar' => 'required',
+            'deskripsi' => 'required',
+            'jenis_kasur' => 'required',
+            'harga' => 'required',
+            'status_kamar' => 'required',
+        ]);
         $kamar = new Kamar();
         if($request->file('gambar_kamar')){
             $validatedData = $request->validate([

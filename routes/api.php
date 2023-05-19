@@ -27,4 +27,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('filter/',[AuthController::class,'filter_tersedia']);
-Route::post('checkout/{id}',[AuthControllers::class,'checkout']);
+Route::post('checkout/{id}',[AuthController::class,'checkout']);

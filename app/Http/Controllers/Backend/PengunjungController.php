@@ -32,6 +32,13 @@ class PengunjungController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'nik' => 'required',
+            'nama_pengunjung' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'telepon' => 'required',
+        ]);
         $pengunjung = new Pengunjung;
         $pengunjung->nik = $request->nik;
         $pengunjung->nama_pengunjung = $request->nama_pengunjung;
@@ -45,6 +52,12 @@ class PengunjungController extends Controller
 
             public function update(Request $request)
         {
+            $request->validate([
+                'nik' => 'required',
+                'nama_pengunjung' => 'required',
+                'email' => 'required',
+                'telepon' => 'required',
+            ]);
             $pengunjung = Pengunjung::findOrFail($request->nik);
             $pengunjung->nik = $request->nik;
             $pengunjung->nama_pengunjung = $request->nama_pengunjung;
@@ -58,7 +71,7 @@ class PengunjungController extends Controller
             $pengunjung->update();
             return redirect()->route('pengunjung.index');
         }
-        
+
             public function destroy($nik)
             {
                 $pengunjung = Pengunjung::find($nik);
