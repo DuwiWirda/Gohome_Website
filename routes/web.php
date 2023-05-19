@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/savetransaksi', [TransaksiController::class, 'save'])->name('transaksi.save');
     Route::get('/searchtransaksi', [TransaksiController::class, 'search'])->name('transaksi.search');
     Route::get('/refreshtransaksi', [TransaksiController::class, 'refresh'])->name('transaksi.refresh');
-    
+
 
 //Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index']);
