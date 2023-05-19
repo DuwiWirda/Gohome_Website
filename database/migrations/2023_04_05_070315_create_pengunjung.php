@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengunjung', function (Blueprint $table) {
-            $table->string('nik',16)->primary();
+            $table->id('nik',16);
             $table->string('nama_pengunjung', 50);
             $table->string('telepon', 13);
             $table->string('email', 25);

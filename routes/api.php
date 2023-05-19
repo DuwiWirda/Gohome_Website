@@ -19,8 +19,12 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('kamar', [AuthController::class, 'kamar']);
 Route::get('pengunjung', [AuthController::class, 'pengunjung']);
 Route::get('transaksi', [AuthController::class, 'transaksi']);
+Route::post('transaksi_id', [AuthController::class, 'transaksi_id']);
 Route::post('data_transaksi', [AuthController::class, 'data_transaksi']);
 Route::put('/update_pengunjung/{nik}', [AuthController::class, 'update_pengunjung']);
+Route::post('updateProfile', [AuthController::class, 'updateProfile']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('filter/',[AuthController::class,'filter_tersedia']);
+Route::post('checkout/{id}',[AuthControllers::class,'checkout']);

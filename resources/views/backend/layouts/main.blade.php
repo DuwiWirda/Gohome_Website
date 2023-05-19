@@ -87,7 +87,7 @@
             </ul>
         </nav><!-- End Icons Navigation -->
     </header><!-- End Header -->
-    @include('layouts.sidebar')
+    @include('backend/layouts.sidebar')
     @yield('container')
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

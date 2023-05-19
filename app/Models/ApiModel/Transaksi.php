@@ -16,7 +16,6 @@ class Transaksi extends Model
         'tanggal_checkin',
         'tanggal_checkout',  
         'status', 
-        'harga', 
         'total', 
         'nik',
         'id_kamar'

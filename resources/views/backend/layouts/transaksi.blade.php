@@ -44,7 +44,7 @@
                     <td>{{ $transaksi->tanggal_checkin }}</td>
                     <td>{{ $transaksi->tanggal_checkout }}</td>
                     <td>{{ $transaksi->status }}</td>
-                    <td>{{ $transaksi->harga }}</td>
+                    <td>{{ $transaksi->kamar->harga }}</td>
                     <td>{{ $transaksi->total }}</td>
                 </tr>
              @endforeach

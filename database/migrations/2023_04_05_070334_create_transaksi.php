@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id('id_transaksi');
-            $table->date('tanggal_checkin');
-            $table->date('tanggal_checkout');
+            $table->string('tanggal_checkin');
+            $table->string('tanggal_checkout');
             $table->enum('status', ['Proses', 'Checkin', 'Checkout']);
-            $table->integer('harga');
             $table->integer('total');
-            $table->string('nik',16);
+            $table->unsignedBigInteger('nik');
             $table->foreign('nik')->references('nik')->on('pengunjung')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('id_kamar');
             $table->foreign('id_kamar')->references('id_kamar')->on('kamar')->onDelete('cascade')->onUpdate('cascade');
