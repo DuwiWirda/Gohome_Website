@@ -4,7 +4,6 @@
 <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
 <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 <main id="main" class="main">
-
     <div class="pagetitle" style="display: flex; align-items: center; justify-content: space-between;">
           <h1>Data Kamar</h1>
           <form action="{{ route('kamar.search') }}" method="GET" style="margin-left: 25px;">
@@ -14,7 +13,6 @@
           <a href="{{ route('kamar.add') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-person-plus"></i></a>
         </div>
     </div>
-
 <section class="section kamar">
 <div class="card">
             <div class="card-body">

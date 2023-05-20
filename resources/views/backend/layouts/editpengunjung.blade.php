@@ -44,7 +44,7 @@
                                 <div class="mb-3">
                                     <label for="Name">Nama Pengunjung : </label>
                                     <input type="text" name="nama_pengunjung" value="{{ $pengunjung->nama_pengunjung }}"
-                                        id="nama_pengunjung"
+                                        id="nama_pengunjung" maxlength="50"
                                         class="form-control @error('nama_pengunjung') is-invalid @enderror">
                                     @error('nama_pengunjung')
                                         <span class="invalid-feedback" role="alert">
@@ -73,9 +73,9 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Phone">No.Hp : </label>
-                                    <input type="number" name="telepon" value="{{ $pengunjung->telepon }}" id="telepon"
-                                        class="form-control @error('telepon') is-invalid @enderror">
+                                    <label for="telepon">No.Hp : </label>
+                                    <input type="telepon" name="telepon" value="{{ $pengunjung->telepon }}" id="telepon"
+                                        class="form-control @error('telepon') is-invalid @enderror" maxlength="13" minlength="11">
                                     @error('telepon')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

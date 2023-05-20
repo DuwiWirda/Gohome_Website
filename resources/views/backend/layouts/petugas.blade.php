@@ -10,15 +10,12 @@
 
 <div class="pagetitle" style="display: flex; align-items: center; justify-content: space-between;">
             <h1>Data Petugas</h1>
-            <form action="{{ route('petugas.search') }}" method="GET" style="margin-left: 25px;">
-              <input class="search" type="text" name="keyword" placeholder="Cari transaksi . . . " required>
             </form>
-            <a href="{{ route('petugas.refresh') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-arrow-clockwise"></i></a>
-            <a href="{{ route('petugas.add') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-person-plus"></i></a>
           </div>
       </div>
 
 <section class="section petugas">
+<div class="table-responsive">
 <div class="card">
             <div class="card-body">
               <!-- Default Table -->
@@ -28,9 +25,7 @@
                     
                     <th scope="col">Nama Petugas</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Jabatan</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Hapus</th>
+                    <th scope="col">Password</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,15 +35,10 @@
                     <td>{{ $petugas->email }}</td>
                     <td>{{ $petugas->role }}</td>
                     <td>
-                    <a href="{{ route('petugas.edit', ['id' => $petugas->id]) }}"class="btn btn-success button p-2"><i
-                                                class="bi bi-pencil"></i></a>
+                  
                     </td>
                     <td>
-                    <form action="{{ route('petugas.destroy', ['id' => $petugas->id]) }}" method="POST" style="display: inline;">
-                      @csrf
-                      @method('DELETE')
-                      <button type="delete" class="btn btn-success button p-2" onclick="showSuccessMessage();"><i class="bi bi-trash-fill"></i></button>
-                    </form>
+                    
                     </td>   
                 </tr>
              @endforeach
@@ -56,6 +46,7 @@
               </table>
               <!-- End Default Table Example -->
             </div>
+          </div>
           </div>
 </section>
 <script>

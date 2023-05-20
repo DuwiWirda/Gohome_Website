@@ -34,12 +34,14 @@
                 </a>
             </li><!-- End Register Page Nav -->
         @endif
+        @if (auth()->user()->role == 'super')
         <li class="nav-item">
             <a class="nav-link collapsed" href="/laporan">
                 <i class="bi bi-journal-text"></i>
                 <span>Laporan</span>
             </a>
         </li>
+        @endif
         <!-- End Login Page Nav -->
     </ul>
 

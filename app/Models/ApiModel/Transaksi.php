@@ -28,6 +28,6 @@ class Transaksi extends Model
     }
     public function kamar()
     {
-        return $this->belongsTo(Post::class, 'id_kamar', 'id_kamar');
+        return $this->belongsTo(Kamar::class, 'id_kamar', 'id_kamar');
     }
 }

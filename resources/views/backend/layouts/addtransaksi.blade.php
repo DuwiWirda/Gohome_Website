@@ -62,13 +62,15 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="email">Harga : </label>
-                <input type="text" name="harga" id="harga" class="form-control">
+                <label for="total">Total : </label>
+                <input type="total" name="total" id="total" class="form-control">
               </div>
               <div class="row mb-3">
                 <div class="col-sm-10">
+                  
                   <button type="submit" class="btn btn-success button p-2" onclick="showSuccessMessage();">Simpan</button>
-                  <button class="btn btn-success button p-2" onclick="reset()">Buang</button>
+                  <a href="{{ route('transaksi.index') }}" class="btn btn-success button p-2"
+                                            style="margin-left: 10px;">Batal</a>
                 </div>
               </div>
             </form><!-- End General Form Elements -->
@@ -77,46 +79,6 @@
       </div>
     </div>
   </section>
-  <script>
-    function showSuccessMessage() {
-      // Buat elemen pop-up
-      var popup = document.createElement("div");
-      popup.className = "popup success";
-      popup.innerText = "Data transaksi berhasil ditambahkan.";
-
-      // Tambahkan pop-up ke dalam body
-      document.body.appendChild(popup);
-
-      // Hilangkan pop-up setelah 3 detik
-
-      setTimeout(function() {
-        popup.remove();
-      }, 30000000);
-    }
-
-    function showFailureMessage() {
-      // Buat elemen pop-up
-      var popup = document.createElement("div");
-      popup.className = "popup failure";
-      popup.innerText = "Gagal menambahkan data transaksi";
-
-      // Tambahkan pop-up ke dalam body
-      document.body.appendChild(popup);
-
-      // Hilangkan pop-up setelah 3 detik
-      setTimeout(function() {
-        popup.remove();
-      }, 30000000);
-    }
-
-    function reset() {
-      // Reset formulir atau lakukan tindakan yang sesuai
-      // ...
-
-      // Tampilkan pesan sukses
-      showSuccessMessage();
-    }
-  </script>
   <script>
     let form = document.getElementById('form-petugas');
 

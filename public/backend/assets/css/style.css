@@ -1123,8 +1123,8 @@ form {
 }
 .select {
   position:relative;
-  padding:0px 20px;
-  left:-1px;
+  padding:5px 20px;
+  left:1px;
   border:2px solid #ffffff;
   background-color:#ffffff;
   color:#005F63;

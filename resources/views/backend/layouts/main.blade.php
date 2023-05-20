@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
+    <link  href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
     <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 
     <!-- Google Fonts -->
@@ -76,10 +76,10 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('logout') }}" method="GET">
                                 @csrf
-                                <a href="{{route('logout')}}" class="dropdown-item d-flex align-items-center"><i
-                                    class="bi bi-box-arrow-right"></i> Logout</button>
+                                <button type="submit" class="dropdown-item d-flex align-items-center"><i
+                                        class="bi bi-box-arrow-right"></i> Logout</button>
                             </form>
                         </li>
                     </ul><!-- End Profile Dropdown Items -->

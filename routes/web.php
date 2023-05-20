@@ -90,6 +90,8 @@ Route::middleware(['auth'])->group(function () {
 
 //Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index']);
-    Route::post('/filterlaporan', [LaporanController::class, 'filter'])->name('laporan.filter');
     Route::get('/export-transaksi', [ExportController::class, 'exportTransaksi'])->name('export.transaksi');
+    Route::post('/laporan/filter', [LaporanController::class, 'filterData'])->name('laporan.filter');
+    Route::get('/laporan/hasil/{dataTransaksi}', [LaporanController::class, 'viewHasil'])->name('laporan.hasil');
+    Route::get('/refreshlaporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
 });
