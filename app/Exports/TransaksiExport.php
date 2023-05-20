@@ -13,3 +13,4 @@ class TransaksiExport implements FromCollection
        return Transaksi::all();
     }
 }
+?>
