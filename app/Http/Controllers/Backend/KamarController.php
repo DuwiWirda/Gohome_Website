@@ -76,7 +76,7 @@ class KamarController extends Controller
         $kamar->deskripsi = $request->deskripsi;
         $kamar->jenis_kasur = $request->jenis_kasur;
         $kamar->gambar_kamar = $request->gambar_kamar;
-        $kamar->status_kamar = $request->status_kamar;
+        // $kamar->status_kamar = $request->status_kamar;
         $kamar->update();
         return redirect()->route('kamar.index');
     }

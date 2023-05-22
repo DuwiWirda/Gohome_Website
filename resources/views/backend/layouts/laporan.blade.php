@@ -54,7 +54,6 @@
                 <tbody>
                 @foreach ($laporan as $key => $transaksi)
                 <tr>
-                    <td>{{ $key + 1 }}</td>
                     <td>{{ $transaksi->Pengunjung->nik }}</td>
                     <td>{{ $transaksi->pengunjung->nama_pengunjung }}</td>
                     <td>{{ $transaksi->kamar->jenis_kamar }}</td>

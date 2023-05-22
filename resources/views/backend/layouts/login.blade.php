@@ -15,18 +15,26 @@
            @csrf
 
           <div class="form-outline mb-4">
+          <label class="form-label" for="form3Example3">Email</label>
             <input type="email" id="email" class="form-control form-control-lg" required id="email" name="email"
               placeholder="Masukkan Email" />
-            <label class="form-label" for="form3Example3">Email</label>
+          
           </div>
           <div class="form-outline mb-3">
+          <label class="form-label" for="form3Example4">Password</label>
             <input type="password" id="password" class="form-control form-control-lg" id="password" required class="form-control" name="password"
               placeholder="Masukkan Password" />
-            <label class="form-label" for="form3Example4">Password</label>
+           
           </div>
-          <div class="text-center text-lg-start mt-4 pt-2"><button type="submit"
+          <div class="text-center mt-4">
+  <button type="submit" style="padding-left: 2.5rem; padding-right: 2.5rem; background-color: #005F63; color:white; border: none; border-radius: 0.5rem; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); transition: background-color 0.3s ease; display: inline-block;">
+    Login
+  </button>
+</div>
+
+          <!-- <div class="text-center text-lg-start mt-4 pt-2"><button type="submit"
               style="padding-left: 2.5rem; padding-right: 2.5rem; background-color: #005F63; color:white">Login</button>
-          </div>
+          </div> -->
         </form>
       </div>
     </div>
