@@ -40,7 +40,7 @@
                     <td>{{ $kamar->harga }}</td>
                     <td>{{ $kamar->deskripsi }}</td>
                     <td>                        
-                                  <img src="{{ asset('images/' . $kamar->gambar_kamar) }}" alt="gambar">
+                                  <img src="{{ asset('images/' . $kamar->gambar_kamar) }}" alt="gambar" style="width: 100px; height: 70px;" >
                     </td>
                     <td>{{ $kamar->status_kamar }}</td>
                     <td>

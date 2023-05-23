@@ -82,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
 //Route Transaksi
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
     Route::get('/addtransaksi', [TransaksiController::class, 'add'])->name('transaksi.add');
+    Route::get('/edittransaksi/{id_transaksi}', [TransaksiController::class, 'edit'])->name('transaksi.edit');
     Route::post('/updatetransaksi', [TransaksiController::class, 'update'])->name('transaksi.update');
     Route::post('/savetransaksi', [TransaksiController::class, 'save'])->name('transaksi.save');
     Route::get('/searchtransaksi', [TransaksiController::class, 'search'])->name('transaksi.search');

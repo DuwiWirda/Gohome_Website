@@ -104,7 +104,7 @@
                                     <label for="email">Status : </label>
                                     <select name="status_kamar"
                                         class="form-control @error('status_kamar') is-invalid @enderror" id="status_kamar">
-                                        <option selected disabled>-- Pilih Status Kasur --</option>
+                                        <option selected disabled>-- Pilih Status --</option>
                                         <option value="Tersedia">Tersedia</option>
                                     </select>
                                     @error('status_kamar')

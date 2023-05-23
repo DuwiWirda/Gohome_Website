@@ -33,6 +33,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Edit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,6 +47,11 @@
                     <td>{{ $transaksi->status }}</td>
                     <td>{{ $transaksi->kamar->harga }}</td>
                     <td>{{ $transaksi->total }}</td>
+                    <td>
+                      <a
+                          href="{{ route('transaksi.edit', ['id_transaksi' => $transaksi->id_transaksi]) }}"class="btn btn-success button p-2"><i
+                                                class="bi bi-pencil"></i></a>
+                    </td>
                 </tr>
              @endforeach
                   

@@ -40,6 +40,11 @@ public function save(Request $request){
     return redirect()->route('transaksi.index');
 }
 
+public function edit($id_transaksi){
+    $transaksi = Transaksi::findOrFail($id_transaksi);
+    return view('backend/layouts.edittransaksi', compact(['transaksi']));
+}
+
 public function update(Request $request){
     $transaksi = Transaksi::findOrFail($request->id);
     $transaksi->id_transaksi = $request->id_transaksi;
@@ -67,7 +72,8 @@ public function update(Request $request){
                 $transaksi = Transaksi::all();
                 return view('backend/layouts.transaksi', compact(['transaksi']));
             }
-            public function total($id_kamar, Request $request)
+           
+        public function total($id_kamar, Request $request)
     {
         $checkin = Carbon::parse($request->get('tanggal_checkin'));
         $checkout = Carbon::parse($request->get('tanggal_checkout'));
