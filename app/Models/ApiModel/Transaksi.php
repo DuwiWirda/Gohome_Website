@@ -24,10 +24,10 @@ class Transaksi extends Model
     
     public function pengunjung()
     {
-        return $this->belongsTo(Pengunjung::class, 'nik', 'nik');
+        return $this->belongsTo(Pengunjung::class, 'nik');
     }
     public function kamar()
     {
-        return $this->belongsTo(Kamar::class, 'id_kamar', 'id_kamar');
+        return $this->belongsTo(Kamar::class, 'id_kamar');
     }
 }

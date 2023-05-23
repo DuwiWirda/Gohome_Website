@@ -86,11 +86,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/savetransaksi', [TransaksiController::class, 'save'])->name('transaksi.save');
     Route::get('/searchtransaksi', [TransaksiController::class, 'search'])->name('transaksi.search');
     Route::get('/refreshtransaksi', [TransaksiController::class, 'refresh'])->name('transaksi.refresh');
+    Route::get('/total/{id}',[TransaksiController::class,'total'])->name('transaksi.total');
 
 
 //Route Laporan
     Route::get('/laporan', [LaporanController::class, 'index']);
-    Route::get('/export-transaksi', [ExportController::class, 'exportTransaksi'])->name('export.transaksi');
+    Route::post('/export-transaksi', [ExportController::class, 'exportTransaksi'])->name('export.transaksi');
     Route::post('/laporan/filter', [LaporanController::class, 'filterData'])->name('laporan.filter');
     Route::get('/laporan/hasil/{dataTransaksi}', [LaporanController::class, 'viewHasil'])->name('laporan.hasil');
     Route::get('/refreshlaporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');

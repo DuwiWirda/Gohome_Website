@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ApiModel\Transaksi;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,5 +25,8 @@ class Pengunjung extends Authenticatable
 
     protected $username = 'email';
     public $timestamps = true;
+    public function transaksi(){
+        return $this->hasOne(Transaksi::class);
+    }
 }
 ?>

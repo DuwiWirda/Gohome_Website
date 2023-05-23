@@ -30,7 +30,11 @@
     </form>
     <div style="display: flex; align-items: center; margin-left: 10px;">
       <a href="{{ route('laporan.refresh') }}" class="btn btn-success button p-2"><i class="bi bi-arrow-clockwise"></i></a>
-      <a href="{{ route('export.transaksi') }}" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-download"></i></a>
+      <form action="{{ route('export.transaksi') }}" method="post">
+        {{csrf_field()}}
+        <input type="hidden" name="bulan_export" id="bulan_export" value="{{$bulan}}">
+        <button type="submit" class="btn btn-success button p-2" style="margin-left: 10px;"><i class="bi bi-download"></i></button>
+      </form>
     </div>
   </div><!-- End Page Title -->
 
@@ -71,4 +75,11 @@
           </div>
 </section>
 </main><!-- End #main -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script>
+  // $('#bulan').on('change',function(){
+  //   var selected = $('#bulan :selected').val();
+  //   $('#bulan_export').val(selected);
+  // })
+</script>
 @endsection

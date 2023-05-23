@@ -1,7 +1,5 @@
 @extends('backend/layouts.main')
 @section('container')
-
-
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -39,7 +37,7 @@
               </div>
               <div class="mb-3">
                 <label for="Name">Pilih Kamar : </label>
-                <select name="jenis_kamar" id="jenis_kamar" class="form-control">
+                <select name="kamar" id="jenis_kamar" class="form-control">
                   @foreach($kamar as $kamar)
                   <option value="{{ $kamar->id_kamar }}">{{ '| ' . $kamar->jenis_kamar . '| ' . $kamar->jenis_kasur . '| ' . $kamar->nomer_kamar . '| ' . $kamar->status_kamar}} </option>
                   @endforeach
@@ -51,7 +49,7 @@
               </div>
               <div class="mb-3">
                 <label for="email">Check Out : </label>
-                <input type="date" name="tanggal_checkout" id="tanggal_checkin" class="form-control">
+                <input type="date" name="tanggal_checkout" id="tanggal_checkout" class="form-control">
               </div>
               <div class="mb-3">
                 <label for="Phone">Status : </label>
@@ -63,7 +61,7 @@
               </div>
               <div class="mb-3">
                 <label for="total">Total : </label>
-                <input type="total" name="total" id="total" class="form-control">
+                <input type="total" name="total" id="total" class="form-control" readonly>
               </div>
               <div class="row mb-3">
                 <div class="col-sm-10">
@@ -79,7 +77,41 @@
       </div>
     </div>
   </section>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script>
+    $(function(){
+      $.ajaxSetup({
+        headers:{
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        }
+      })
+    })
+    $('#tanggal_checkout').on('change',function(){
+      let idKamar = $('#jenis_kamar').find(":selected").val();
+      let tanggal_checkin = $('#tanggal_checkin').val();
+      let tanggal_checkout = $('#tanggal_checkout').val();
+      var url = "{{ route('transaksi.total',':id')}}";
+      console.log(tanggal_checkout + " " +tanggal_checkin+" "+idKamar);
+
+      $.ajax({
+        url: url.replace(':id',idKamar),
+        method: 'GET',
+        data:{
+          // "_token": "{{ csrf_token() }}",
+          'tanggal_checkin': tanggal_checkin,
+          'tanggal_checkout': tanggal_checkout
+        },
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: (data)=>{
+          console.log(data.total);
+          $('#total').val(data.total);
+        }
+      })
+    })
+
     let form = document.getElementById('form-petugas');
 
     const reset = () => {

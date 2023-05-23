@@ -35,13 +35,16 @@ class KamarController extends Controller
             'status_kamar' => 'required',
         ]);
         $kamar = new Kamar();
-        if($request->file('gambar_kamar')){
+        if($request->has('gambar_kamar')){
             $validatedData = $request->validate([
                 'gambar_kamar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
             $foto = $request->file('gambar_kamar')->getClientOriginalName();
-            $path = $request->file('gambar_kamar')->move('images/' , $foto);
-            $kamar->gambar_kamar = $foto;
+            $ext = $request->file('gambar_kamar')->getClientOriginalExtension();
+            $nama_file = 'GambarKamar'.$request->id_kamar.".".$ext;
+            $path = $request->file('gambar_kamar')->move('images/' , $nama_file);
+            // dd($foto);
+        
         }
         $kamar->id_kamar = $request->id_kamar;
         $kamar->jenis_kamar = $request->jenis_kamar;
@@ -49,7 +52,7 @@ class KamarController extends Controller
         $kamar->harga = $request->harga;
         $kamar->deskripsi = $request->deskripsi;
         $kamar->jenis_kasur = $request->jenis_kasur;
-        $kamar->gambar_kamar = $request->gambar_kamar;
+        $kamar->gambar_kamar = $nama_file;
         $kamar->status_kamar = $request->status_kamar;
         $kamar->save();
         return redirect()->route('kamar.index');
@@ -61,13 +64,15 @@ class KamarController extends Controller
     }
     public function update(Request $request){
         $kamar = Kamar::findOrFail($request->id_kamar);
-        if($request->file('gambar')){
+        if($request->has('gambar_kamar')){
             $validatedData = $request->validate([
-                'gambar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'gambar_kamar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
-            $foto = $request->file('gambar')->getClientOriginalName();
-            $path = $request->file('gambar')->move('images/' , $foto);
-            $kamar->gambar_kamar = $foto;
+            $foto = $request->file('gambar_kamar')->getClientOriginalName();
+            $ext = $request->file('gambar_kamar')->getClientOriginalExtension();
+            $nama_file = 'GambarKamar'.$request->id_kamar.".".$ext;
+            $path = $request->file('gambar_kamar')->move('images/' , $nama_file);
+            // dd($foto);
         }
         $kamar->id_kamar = $request->id_kamar;
         $kamar->jenis_kamar = $request->jenis_kamar;
@@ -75,7 +80,7 @@ class KamarController extends Controller
         $kamar->harga = $request->harga;
         $kamar->deskripsi = $request->deskripsi;
         $kamar->jenis_kasur = $request->jenis_kasur;
-        $kamar->gambar_kamar = $request->gambar_kamar;
+        $kamar->gambar_kamar = $nama_file;
         // $kamar->status_kamar = $request->status_kamar;
         $kamar->update();
         return redirect()->route('kamar.index');

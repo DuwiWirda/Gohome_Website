@@ -8,6 +8,7 @@
     <title>GoHome{{ isset($title) ? ' | ' . $title : '' }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
     <link  href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">

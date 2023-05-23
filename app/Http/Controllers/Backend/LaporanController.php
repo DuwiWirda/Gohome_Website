@@ -11,8 +11,9 @@ use Carbon\Carbon;
 class LaporanController extends Controller
 {
     public function index(){
+        $bulan='';
         $laporan = Laporan::with('pengunjung','kamar')->get();
-    return view('backend/layouts.laporan', compact('laporan'));
+    return view('backend/layouts.laporan', compact('laporan', 'bulan'));
     }
 // public function filter(Request $request)
 // {
@@ -34,14 +35,18 @@ public function viewHasil($dataTransaksi)
         $laporan = Laporan::with('pengunjung', 'kamar')
             ->whereMonth('tanggal_checkin', $bulan)
             ->get();
-        return view('backend/layouts.laporan', compact('laporan'));
+        return view('backend/layouts.laporan', compact('laporan','bulan'));
     }
+
     public function refresh()
             {
                 // Mengambil data pengunjung tanpa melakukan pencarian atau filter
+                $bulan='';
                 $laporan = Laporan::all();
-                return view('backend/layouts.laporan', compact(['laporan']));
+                return view('backend/layouts.laporan', compact('laporan','bulan'));
             }
+
+
 }
 
 

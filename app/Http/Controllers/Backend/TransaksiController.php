@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ApiModel\Kamar;
 use App\Models\Pengunjung;
 use App\Models\ApiModel\Transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -66,7 +67,20 @@ public function update(Request $request){
                 $transaksi = Transaksi::all();
                 return view('backend/layouts.transaksi', compact(['transaksi']));
             }
+            public function total($id_kamar, Request $request)
+    {
+        $checkin = Carbon::parse($request->get('tanggal_checkin'));
+        $checkout = Carbon::parse($request->get('tanggal_checkout'));
 
+        $count = $checkin->diffInDays($checkout) == 0 ? 1 : $checkin->diffInDays($checkout);
+        $kamar = Kamar::find($id_kamar);
+
+        $array = array(
+            'total' => $kamar->harga * $count
+        );
+
+        return response()->json($array);
+    }
 
 }
 

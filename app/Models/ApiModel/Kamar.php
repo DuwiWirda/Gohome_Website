@@ -22,4 +22,7 @@ class Kamar extends Model
         'status_kamar'
     ];
     public $timestamps = true;
+    public function transaksi(){
+        return $this->hasOne(Transaksi::class);
+    }
 }
