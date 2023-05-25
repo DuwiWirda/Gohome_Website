@@ -22,7 +22,7 @@
                             <h5 class="card-title"></h5>
                             <!-- General Form Elements -->
                             <form class="container" method="POST" id="form-transaksi"
-                                action="{{ route('transaksi.update') }}">
+                                action="{{ route('transaksi.update', $transaksi) }}">
                                 @csrf
                                 <input type="hidden" name="id_transaksi" value="{{ $transaksi->id_transaksi }}">
                                 <div class="mb-3">

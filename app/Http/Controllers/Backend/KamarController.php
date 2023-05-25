@@ -73,6 +73,7 @@ class KamarController extends Controller
             $ext = $request->file('gambar_kamar')->getClientOriginalExtension();
             $nama_file = 'GambarKamar'.$request->id_kamar.".".$ext;
             $path = $request->file('gambar_kamar')->move('images/' , $nama_file);
+            $kamar->gambar_kamar = $nama_file;
             // dd($foto);
         }
         $kamar->id_kamar = $request->id_kamar;
@@ -81,7 +82,7 @@ class KamarController extends Controller
         $kamar->harga = $request->harga;
         $kamar->deskripsi = $request->deskripsi;
         $kamar->jenis_kasur = $request->jenis_kasur;
-        $kamar->gambar_kamar = $nama_file;
+
         // $kamar->status_kamar = $request->status_kamar;
         $kamar->update();
         return redirect()->route('kamar.index')

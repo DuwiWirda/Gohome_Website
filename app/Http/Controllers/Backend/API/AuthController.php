@@ -22,16 +22,16 @@ use Illuminate\Support\Facades\Validator;
             'email' => 'required|email',
             'password' => 'required',
             'telepon' => 'required',
-        ]); 
+        ]);
         if($validator->fails()){
             return response()->json([
-            
+
                 'success'=> false,
                 'massage' => 'ada kesalahan',
                 'data'=> $validator -> errors()->first()
-            
+
             ], 403);
-        
+
         }
         $input = $request->all();
         $input['password']=bcrypt($input['password']);
@@ -40,9 +40,9 @@ use Illuminate\Support\Facades\Validator;
         $success['nama_pengunjung']=$user->nama_pengunjung;
         $success['email']=$user->email;
         $success['telepon']=$user->telepon;
-    
+
         return response()->json([
-        
+
             'success'=> true,
             'massage'=> 'sukses register',
             'data'=> $success
@@ -51,11 +51,11 @@ use Illuminate\Support\Facades\Validator;
         public function login(Request $request)
         {
             $credentials = $request->only('email', 'password');
-    
+
             if (Auth::guard('pengunjung')->attempt($credentials)) {
                 $auth = Auth::guard('pengunjung')->user();
                 $auth['token']=$auth->createToken('auth_token')->plainTextToken;
-    
+
                 return response()->json([
                     'success' => true,
                     'message' => 'Login berhasil' ,
@@ -63,11 +63,11 @@ use Illuminate\Support\Facades\Validator;
                 ]);
             } else {
                 return response()->json([
-                   
+
                     'success' => false,
                     'message' => 'Email atau password salah',
                     'data' => null
-                    
+
                 ]);
             }
         }
@@ -95,7 +95,7 @@ use Illuminate\Support\Facades\Validator;
             $validator = Validator::make($request->all(), [
                 'nik' => 'required'
             ]);
-        
+
             if ($validator->fails()) {
                 return response()->json([
                     'success' => false,
@@ -103,15 +103,15 @@ use Illuminate\Support\Facades\Validator;
                     'data' => $validator->errors()->first()
                 ], 400);
             }
-         
+
             $nik = $request->input('nik');
-        
+
             $transaksi = Transaksi::join('kamar', 'transaksi.id_kamar', '=', 'kamar.id_kamar')
                 ->join('pengunjung', 'transaksi.nik', '=', 'pengunjung.nik')
                 ->where('pengunjung.nik', $nik)
-                ->select('transaksi.id_transaksi', 'transaksi.tanggal_checkin', 'transaksi.tanggal_checkout', 'transaksi.status','transaksi.total', 'kamar.jenis_kamar', 'pengunjung.nik')
+                ->select('transaksi.id_transaksi', 'transaksi.tanggal_checkin', 'transaksi.tanggal_checkout', 'transaksi.status','transaksi.total', 'kamar.jenis_kamar', 'pengunjung.nik', 'kamar.gambar_kamar')
                 ->get();
-        
+
             if ($transaksi->isEmpty()) {
                 return response()->json([
                     'success' => false,
@@ -119,7 +119,7 @@ use Illuminate\Support\Facades\Validator;
                     'data' => []
                 ]);
             }
-        
+
             return response()->json([
                 'success' => true,
                 'message' => 'Sukses mendapatkan data transaksi',
@@ -165,7 +165,7 @@ use Illuminate\Support\Facades\Validator;
                 $input['tanggal_checkout']);
             $data = DB::select("SELECT * FROM kamar JOIN transaksi ON kamar.id_kamar = transaksi.id_kamar WHERE kamar.status_kamar = 'Tersedia' AND transaksi.tanggal_checkin BETWEEN ? AND ?",$arr_bindings);
             return response()->json($data);
-            
+
         }
 
         public function checkout($id_kamar, Request $request)
@@ -174,22 +174,22 @@ use Illuminate\Support\Facades\Validator;
                 'tanggal_checkin' => 'required|date',
                 'tanggal_checkout' => 'required|date|after_or_equal:tanggal_checkin',
             ]);
-        
+
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 400);
             }
-        
+
             $input = $validator->validated();
             $checkin = Carbon::parse($input['tanggal_checkin']);
             $checkout = Carbon::parse($input['tanggal_checkout']);
-        
-            $count = $checkin->diffInDays($checkout) == 0 ? 1 : $checkin->diffInDays($checkout); 
+
+            $count = $checkin->diffInDays($checkout) == 0 ? 1 : $checkin->diffInDays($checkout);
             $kamar = Kamar::find($id_kamar);
-        
+
             $array = array(
                 'total' => $kamar->harga * $count
             );
-        
+
             return response()->json($array);
         }
 
@@ -200,10 +200,10 @@ use Illuminate\Support\Facades\Validator;
         //     $checkout =  Carbon::parse($input['tanggal_checkout']);
         //     /**
         //      * Ternary
-        //      * Cek apakah tanggal checkin == tanggal checkout dan jika iya tampilkan 1... 
+        //      * Cek apakah tanggal checkin == tanggal checkout dan jika iya tampilkan 1...
         //      * jika tidak tampilkan jumlah harinya..
         //      */
-        //     $count = $checkin->diffInDays($checkout) == 0 ? 1 : $checkin->diffInDays($checkout); 
+        //     $count = $checkin->diffInDays($checkout) == 0 ? 1 : $checkin->diffInDays($checkout);
         //     $kamar = Kamar::find($id_kamar);
         //     $array = array(
         //         'total'=>$kamar->harga * $count
@@ -274,7 +274,7 @@ use Illuminate\Support\Facades\Validator;
                 'nik' => 'required',
                 'id_kamar' => 'required'
             ]);
-        
+
             if ($validator->fails()) {
                 // Jika validasi gagal, kembalikan pesan kesalahan
                 $response = [
@@ -288,7 +288,7 @@ use Illuminate\Support\Facades\Validator;
                 $input = $request->only(['tanggal_checkin', 'tanggal_checkout', 'total', 'nik', 'id_kamar']);
                 $input += ['status' => 'Proses'];
                 $data_transaksi = Transaksi::create($input);
-        
+
                 if ($data_transaksi) {
                     // Transaksi berhasil dibuat
                     $response = [
@@ -307,10 +307,10 @@ use Illuminate\Support\Facades\Validator;
                     $status_code = 500; // Internal Server Error
                 }
             }
-        
+
             return response()->json($response, $status_code);
         }
 
         }
-    
+
 ?>
