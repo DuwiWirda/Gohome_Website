@@ -44,7 +44,7 @@ class KamarController extends Controller
             $nama_file = 'GambarKamar'.$request->id_kamar.".".$ext;
             $path = $request->file('gambar_kamar')->move('images/' , $nama_file);
             // dd($foto);
-        
+
         }
         $kamar->id_kamar = $request->id_kamar;
         $kamar->jenis_kamar = $request->jenis_kamar;
@@ -55,7 +55,8 @@ class KamarController extends Controller
         $kamar->gambar_kamar = $nama_file;
         $kamar->status_kamar = $request->status_kamar;
         $kamar->save();
-        return redirect()->route('kamar.index');
+        return redirect()->route('kamar.index')
+        ->with('success', 'Data Kamar Berhasil Disimpan'); //warning tambah kamar
     }
 
     public function edit($id_kamar){
@@ -83,7 +84,8 @@ class KamarController extends Controller
         $kamar->gambar_kamar = $nama_file;
         // $kamar->status_kamar = $request->status_kamar;
         $kamar->update();
-        return redirect()->route('kamar.index');
+        return redirect()->route('kamar.index')
+        ->with('success', 'Data Kamar Berhasil Diubah'); //warning mengubah data kamar
     }
 
         public function destroy($id_kamar)

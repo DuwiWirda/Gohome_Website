@@ -11,7 +11,7 @@
     <meta name="csrf_token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
-    <link  href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
+    <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="icon">
     <link href="{{ asset('backend/assets/img/greenlogo.png') }}" rel="logo">
 
     <!-- Google Fonts -->
@@ -30,7 +30,6 @@
     <link href="{{ asset('backend/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/sweetalert2/sweetalert2.min.css') }}">
-
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
@@ -77,7 +76,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                        <form action="{{ route('logout') }}" method="GET">
+                            <form action="{{ route('logout') }}" method="GET">
                                 @csrf
                                 <button type="submit" class="dropdown-item d-flex align-items-center"><i
                                         class="bi bi-box-arrow-right"></i> Logout</button>

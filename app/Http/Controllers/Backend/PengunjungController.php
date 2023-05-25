@@ -47,7 +47,7 @@ class PengunjungController extends Controller
         $pengunjung->telepon = $request->telepon;
         $pengunjung->save();
         return redirect()->route('pengunjung.index')
-        ->with('success');
+        ->with('success', 'Transaksi Berhasil Disimpan');//buat warning data berhasil ditambahkan
     }
 
             public function update(Request $request)
@@ -69,7 +69,8 @@ class PengunjungController extends Controller
             }
             $pengunjung->telepon = $request->telepon;
             $pengunjung->update();
-            return redirect()->route('pengunjung.index');
+            return redirect()->route('pengunjung.index')
+            ->with('success', 'Pengunjung Berhasil Diubah'); //warning ubah edit data
         }
 
             public function destroy($nik)

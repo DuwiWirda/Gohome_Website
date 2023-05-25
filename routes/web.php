@@ -56,6 +56,11 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+// redirect /login to /
+// Route::get('/login', function () {
+//     return redirect('/');
+// });
+
 //Route Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -83,7 +88,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
     Route::get('/addtransaksi', [TransaksiController::class, 'add'])->name('transaksi.add');
     Route::get('/edittransaksi/{id_transaksi}', [TransaksiController::class, 'edit'])->name('transaksi.edit');
-    Route::post('/updatetransaksi', [TransaksiController::class, 'update'])->name('transaksi.update');
+    Route::post('/updatetransaksi/{id_transaksi}', [TransaksiController::class, 'update'])->name('transaksi.update');
     Route::post('/savetransaksi', [TransaksiController::class, 'save'])->name('transaksi.save');
     Route::get('/searchtransaksi', [TransaksiController::class, 'search'])->name('transaksi.search');
     Route::get('/refreshtransaksi', [TransaksiController::class, 'refresh'])->name('transaksi.refresh');
