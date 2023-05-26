@@ -31,7 +31,7 @@
                                 action="{{ route('pengunjung.update') }}">
                                 @csrf
                                 <input type="hidden" name="nik" value="{{ $pengunjung->nik }}">
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label for="Nik">NIK : </label>
                                     <input type="number" name="nik" value="{{ $pengunjung->nik }}" id="nik"
                                         class="form-control @error('nik') is-invalid @enderror">
@@ -40,7 +40,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="mb-3">
                                     <label for="Name">Nama Pengunjung : </label>
                                     <input type="text" name="nama_pengunjung" value="{{ $pengunjung->nama_pengunjung }}"
@@ -75,7 +75,8 @@
                                 <div class="mb-3">
                                     <label for="telepon">No.Hp : </label>
                                     <input type="telepon" name="telepon" value="{{ $pengunjung->telepon }}" id="telepon"
-                                        class="form-control @error('telepon') is-invalid @enderror" maxlength="13" minlength="11">
+                                        class="form-control @error('telepon') is-invalid @enderror" maxlength="13"
+                                        minlength="11">
                                     @error('telepon')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
