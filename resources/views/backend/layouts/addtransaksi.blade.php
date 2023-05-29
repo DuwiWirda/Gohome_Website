@@ -57,6 +57,7 @@
                   <option value="Proses">Proses</option>
                   <option value="Checkin">Checkin</option>
                   <option value="Checkout">Checkout</option>
+                  <option value="Cancel">Cancel</option>
                 </select>
               </div>
               <div class="mb-3">
@@ -65,10 +66,9 @@
               </div>
               <div class="row mb-3">
                 <div class="col-sm-10">
-                  
+
                   <button type="submit" class="btn btn-success button p-2" onclick="showSuccessMessage();">Simpan</button>
-                  <a href="{{ route('transaksi.index') }}" class="btn btn-success button p-2"
-                                            style="margin-left: 10px;">Batal</a>
+                  <a href="{{ route('transaksi.index') }}" class="btn btn-success button p-2" style="margin-left: 10px;">Batal</a>
                 </div>
               </div>
             </form><!-- End General Form Elements -->
@@ -80,37 +80,34 @@
 
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script>
-    $(function(){
+    $(function() {
       $.ajaxSetup({
-        headers:{
+        headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
       })
     })
-    $('#tanggal_checkout').on('change',function(){
+
+    $('#tanggal_checkout').on('change', function() {
       let idKamar = $('#jenis_kamar').find(":selected").val();
       let tanggal_checkin = $('#tanggal_checkin').val();
       let tanggal_checkout = $('#tanggal_checkout').val();
       var url = "{{ route('transaksi.total',':id')}}";
-      console.log(tanggal_checkout + " " +tanggal_checkin+" "+idKamar);
+      console.log(tanggal_checkout + " " + tanggal_checkin + " " + idKamar);
 
       $.ajax({
-        url: url.replace(':id',idKamar),
+        url: url.replace(':id', idKamar),
         method: 'GET',
-        data:{
-          // "_token": "{{ csrf_token() }}",
+        data: {
           'tanggal_checkin': tanggal_checkin,
           'tanggal_checkout': tanggal_checkout
         },
-        cache: false,
-        processData: false,
-        contentType: false,
-        success: (data)=>{
+        success: function(data) {
           console.log(data.total);
           $('#total').val(data.total);
         }
-      })
-    })
+      });
+    });
 
     let form = document.getElementById('form-petugas');
 

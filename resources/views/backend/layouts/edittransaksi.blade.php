@@ -36,6 +36,8 @@
                                             Checkin</option>
                                         <option value="Checkout" {{ $transaksi->status == 'Checkout' ? 'selected' : '' }}>
                                             Checkout</option>
+                                            <option value="Cancel" {{ $transaksi->status == 'Cancel' ? 'selected' : '' }}>
+                                            Cancel</option>
                                     </select>
                                     @error('status')
                                         <span class="invalid-feedback" role="alert">

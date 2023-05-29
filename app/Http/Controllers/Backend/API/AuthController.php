@@ -109,6 +109,7 @@ use Illuminate\Support\Facades\Validator;
             $transaksi = Transaksi::join('kamar', 'transaksi.id_kamar', '=', 'kamar.id_kamar')
                 ->join('pengunjung', 'transaksi.nik', '=', 'pengunjung.nik')
                 ->where('pengunjung.nik', $nik)
+                ->orderBy('transaksi.id_transaksi', 'desc')
                 ->select('transaksi.id_transaksi', 'transaksi.tanggal_checkin', 'transaksi.tanggal_checkout', 'transaksi.status','transaksi.total', 'kamar.jenis_kamar', 'pengunjung.nik', 'kamar.gambar_kamar')
                 ->get();
 

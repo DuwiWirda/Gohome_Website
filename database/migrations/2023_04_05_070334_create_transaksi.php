@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_transaksi');
             $table->string('tanggal_checkin',20);
             $table->string('tanggal_checkout',20);
-            $table->enum('status', ['Proses', 'Checkin', 'Checkout']);
+            $table->enum('status', ['Proses', 'Checkin', 'Checkout','Cancel']);
             $table->integer('total');
             $table->unsignedBigInteger('nik');
             $table->foreign('nik')->references('nik')->on('pengunjung')->onDelete('cascade')->onUpdate('cascade');
